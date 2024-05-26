@@ -42,6 +42,19 @@ env
 
 ## supervisor
 ```shell
-docker container exec -it 'container-name' bash
-env
+[program:ngnix]
+command=/usr/sbin/nginx -g 'daemon off'
+autostar=true
+autorestar=true
+```
+
+## Ciclo de vida de un contenedor
+![img.png](img/e457f88c-f649-4cf9-ab34-314b429a3229.png)
+
+## Restar policy | políticas de reinicio
+```shell
+docker create -p 'port-host:port-container' --name 'name-container' 'name-image:version'
+docker start 'name-container' -p 8080:80 --restart no | flag no default
+docker start 'name-container' -p 8080:80 --restart always | flag always
+docker update --restart always 'name-container' | actualiza la politica de reinicio de un contenedor ya creado
 ```

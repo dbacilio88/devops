@@ -31,4 +31,8 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-a
 minikube version
   minikube version: v1.33.1
   commit: 5883c09216182566a63dff4c326a6fc9ed2982ff
+
+useradd -u 1024 -g docker docker
+minikube start --force --driver=docker
+
 ```
