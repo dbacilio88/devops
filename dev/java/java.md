@@ -288,7 +288,7 @@ public class AppInterfaces {
         System.out.println(Employee.class.getName());
 
 
-        IGenericDatabaseService<String> anonymousService = new IGenericDatabaseService<String>() {
+        IGenericDatabaseService<String> anonymousService = new IGenericDatabaseService<>() {
             @Override
             public String getById(long id) {
                 return "Id anonymousService";

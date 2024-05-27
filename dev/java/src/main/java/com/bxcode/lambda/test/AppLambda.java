@@ -25,7 +25,7 @@ public class AppLambda {
 
 
     public static void main(String[] args) {
-        IMathFunctional addition = (a, b) -> a + b;
+        IMathFunctional addition = Double::sum;
         IMathFunctional subtraction = (a, b) -> a - b;
         IMathFunctional division = (a, b) -> a / b;
         IMathFunctional multiplication = (a, b) -> a * b;

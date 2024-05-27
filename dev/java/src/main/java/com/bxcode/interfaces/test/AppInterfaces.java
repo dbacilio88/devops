@@ -39,7 +39,7 @@ public class AppInterfaces {
 
 
         log.info("postgres {} ", postgres.getById(1L));
-        log.info("mongo: {}", mongo.getById(1L));
+        log.info("mongo: {}", mongo.getAll());
 
         log.info("employee: {}", employee.getById(1L));
         log.info("product: {}", product.getById(1L));
@@ -59,8 +59,11 @@ public class AppInterfaces {
                 return List.of("anonymousService", "database service");
             }
         };
-
         log.info("anonymous: {}", anonymousService);
+
+        IGenericDatabaseService<Employee> service = new EmployeeDatabaseService();
+
+        log.info("service employee: {}", service.getAll());
 
     }
 }

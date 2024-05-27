@@ -20,16 +20,4 @@ public interface IDatabaseService {
     String getById(long id);
 
     List<String> getAll();
-
-    default String getName() {
-        return "my name";
-    }
-
-    default String getLastName() {
-        return "my lastName";
-    }
-
-    static String getMethod() {
-        return "get static";
-    }
 }
