@@ -394,7 +394,7 @@ import com.bxcode.lambda.contracts.IMathFunctional;
 public class AppLambda {
 
     public static void main(String[] args) {
-        IMathFunctional addition = (a, b) -> a + b;
+        IMathFunctional addition = Double::sum;
         IMathFunctional subtraction = (a, b) -> a - b;
         IMathFunctional division = (a, b) -> a / b;
         IMathFunctional multiplication = (a, b) -> a * b;
@@ -459,7 +459,7 @@ import com.bxcode.lambda.contracts.IPrinterFunctional;
 public class AppLambda {
 
     public static void main(String[] args) {
-        IMathFunctional addition = (a, b) -> a + b;
+        IMathFunctional addition = Double::sum;
         IMathFunctional subtraction = (a, b) -> a - b;
         IMathFunctional division = (a, b) -> a / b;
         IMathFunctional multiplication = (a, b) -> a * b;
@@ -470,7 +470,7 @@ public class AppLambda {
         System.out.println(multiplication.execute(1.2, 2.2));
 
 
-        IPrinterFunctional<String> printString = s -> System.out.println(s);
+        IPrinterFunctional<String> printString = System.out::println;
         printString.print("Hola mundo");
 
         IPrinterFunctional<Product> printProduct = System.out::println;
