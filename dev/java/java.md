@@ -50,7 +50,6 @@ public interface IDatabaseService {
         return "get static";
     }
 }
-
 ```
 
 ## Create Implement Interface
@@ -179,9 +178,6 @@ public class EmployeeDatabaseService implements IGenericDatabaseService<Employee
                 .build());
     }
 }
-
-
-
 ```
 
 ```java
@@ -207,7 +203,6 @@ import java.util.List;
  */
 public class ProductDatabaseService implements IGenericDatabaseService<Product> {
 
-
     @Override
     public Product getById(long id) {
         return Product.builder()
@@ -226,9 +221,6 @@ public class ProductDatabaseService implements IGenericDatabaseService<Product> 
                 .build());
     }
 }
-
-
-
 ```
 
 ## Clases Anónimas
@@ -277,7 +269,6 @@ public class AppInterfaces {
         EmployeeDatabaseService employee = new EmployeeDatabaseService();
         ProductDatabaseService product = new ProductDatabaseService();
 
-
         System.out.println(postgres.getAll());
         System.out.println(mongo.getAll());
 
@@ -301,12 +292,8 @@ public class AppInterfaces {
         };
 
         System.out.println(anonymousService);
-
     }
 }
-
-
-
 ```
 
 ## Expresiones Lambda
@@ -384,7 +371,6 @@ public interface IMathFunctional {
     default Double sum(Double a, Double b) {
         return a + b;
     }
-
 }
 
 ```
@@ -439,9 +425,6 @@ public class AppLambda {
                 .build());
     }
 }
-
-
-
 ```
 
 - Expresiones Genéricas
@@ -466,7 +449,6 @@ package com.bxcode.lambda.contracts;
 @FunctionalInterface
 public interface IPrinterFunctional<T> {
     void print(T t);
-
 }
 ```
 
@@ -522,11 +504,8 @@ public class AppLambda {
                 .name("Employee expression lambda")
                 .description("Employee expression lambda")
                 .build());
-
-
     }
 }
-
 ```
 
 ```java
@@ -554,18 +533,14 @@ import java.util.List;
 public class AppLambda {
 
     public static void main(String[] args) {
-
         List<String> countries = List.of("Mexico", "Colombia");
         for (String c : countries) {
             log.info("country: {}", c);
         }
-
         // Expression Lambda:
         countries.forEach(c -> log.info("lambda country: {}", c.toUpperCase()));
-
     }
 }
-
 ```
 
 - Referencias a métodos:
@@ -577,14 +552,14 @@ public class AppLambda {
     - ```"MyClassOrObject::methodName" MyClassOrObject => Clase u Objeto, :: => Los métodos referenciados se especifica con doble punto (::) y methodName => Nombre del método a referenciar```
 - Existen 4 tipos:
 
-  | **Tipo de Referencia**       | **Referencia método**                | **Expresión lamba**                        |
-    |------------------------------|--------------------------------------|--------------------------------------------|
-  | [Método estático](#Estático) | ```String::ValueOf```                | ```s-> String.valueOf(s)```                |
-  | Método de un objeto          | ```var r = new Random() r::nexInt``` | ```var r=new Random() n -> r.nextInt(n)``` |
-  | Método arbitrario            | ```String::equals```                 | ```(s1,s2)-> s1.equals(s2)```              |
-  | Método constructor           | ```Person::new```                    | ```s-> new Person(s)```                    |
+  | **Tipo de Referencia**                        | **Referencia método**                | **Expresión lamba**                        |
+    |-----------------------------------------------|--------------------------------------|--------------------------------------------|
+  | [Método de un objeto](#Referencia-de-Método)  | ```var r = new Random() r::nexInt``` | ```var r=new Random() n -> r.nextInt(n)``` |
+  | [Método estático](#Método-Estático)           | ```String::ValueOf```                | ```s-> String.valueOf(s)```                |
+  | [Método constructor](#Referencia-Constructor) | ```Person::new```                    | ```s-> new Person(s)```                    |
+  | [Método arbitrario](#Método-arbitrario)       | ```String::equals```                 | ```(s1,s2)-> s1.equals(s2)```              |
 
-Referencia de método:
+### Referencia de Método:
 
 ```java
 package com.bxcode.lambda.test;
@@ -627,16 +602,16 @@ public class AppLambda {
 
 ```
 
-Estático
+### Método Estático
 
 ```java
+
 package com.bxcode.lambda.test;
 
 import lombok.extern.log4j.Log4j2;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.IntStream;
+import java.util.UUID;
+import java.util.function.Supplier;
 
 /**
  * AppLambda
@@ -657,18 +632,98 @@ public class AppLambda {
 
     public static void main(String[] args) {
 
-        List<Integer> numbers = new ArrayList<>(10);
-        //similar a un for
-        IntStream repeat = IntStream.range(1, 11);
-        //repeat.forEach(i -> numbers.add(i));
-        //referencia a métodos
-        repeat.forEach(numbers::add);
-        log.info("numbers {}", numbers);
+        //expresión lambda:
+        Supplier<UUID> token = () -> UUID.randomUUID();
+        //referencia a método estético:
+        Supplier<UUID> uuid = UUID::randomUUID;
+
+        log.info("token: {}", token.get());
+        log.info("uuid: {}", uuid.get());
+
     }
 }
 
 
 
+```
+
+### Referencia Constructor
+
+```java
+package com.bxcode.lambda.test;
+
+import com.bxcode.dto.Product;
+import lombok.extern.log4j.Log4j2;
+
+import java.util.function.Supplier;
+
+/**
+ * AppLambda
+ * <p>
+ * AppLambda class.
+ * <p>
+ * THIS COMPONENT WAS BUILT ACCORDING TO THE DEVELOPMENT STANDARDS
+ * AND THE BXCODE APPLICATION DEVELOPMENT PROCEDURE AND IS PROTECTED
+ * BY THE LAWS OF INTELLECTUAL PROPERTY AND COPYRIGHT...
+ *
+ * @author Bxcode
+ * @author dbacilio88@outlook.es
+ * @since 27/05/2024
+ */
+
+@Log4j2
+public class AppLambda {
+
+    public static void main(String[] args) {
+
+        //expresión lambda:
+        Supplier<Product> productEL = () -> new Product();
+        //referencia a método constructor:
+        Supplier<Product> productRM = Product::new;
+
+        log.info("productEL: {}", productEL.get());
+        log.info("productRM : {}", productRM.get());
+    }
+}
+```
+
+### Método arbitrario
+
+```java
+package com.bxcode.lambda.test;
+
+import lombok.extern.log4j.Log4j2;
+
+import java.util.function.BiPredicate;
+
+/**
+ * AppLambda
+ * <p>
+ * AppLambda class.
+ * <p>
+ * THIS COMPONENT WAS BUILT ACCORDING TO THE DEVELOPMENT STANDARDS
+ * AND THE BXCODE APPLICATION DEVELOPMENT PROCEDURE AND IS PROTECTED
+ * BY THE LAWS OF INTELLECTUAL PROPERTY AND COPYRIGHT...
+ *
+ * @author Bxcode
+ * @author dbacilio88@outlook.es
+ * @since 27/05/2024
+ */
+
+@Log4j2
+public class AppLambda {
+
+    public static void main(String[] args) {
+
+        //expresión lambda:
+        BiPredicate<String, String> equalsEL = (s1, s2) -> s1.equals(s2);
+        //referencia a método arbitraria:
+        BiPredicate<String, String> equalsRM = String::equals;
+
+        log.info("equalsEL: {}", equalsEL.test("1", "1"));
+        log.info("equalsRM : {}", equalsRM.test("2", "1"));
+    }
+}
 ```
 
 

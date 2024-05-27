@@ -2,9 +2,7 @@ package com.bxcode.lambda.test;
 
 import lombok.extern.log4j.Log4j2;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.IntStream;
+import java.util.function.BiPredicate;
 
 /**
  * AppLambda
@@ -25,17 +23,12 @@ public class AppLambda {
 
     public static void main(String[] args) {
 
-        List<Integer> numbers = new ArrayList<>(10);
-        //similar a un for
-        IntStream repeat = IntStream.range(1, 11);
-        /**
-         * @apiNote expression lambda
-         * repeat.forEach(i -> numbers.add(i));
-         * referencia a métodos
-         */
-        repeat.forEach(numbers::add);
-        log.info("numbers {}", numbers);
+        //expresión lambda:
+        BiPredicate<String, String> equalsEL = (s1, s2) -> s1.equals(s2);
+        //referencia a método arbitraria:
+        BiPredicate<String, String> equalsRM = String::equals;
+
+        log.info("equalsEL: {}", equalsEL.test("1", "1"));
+        log.info("equalsRM : {}", equalsRM.test("2", "1"));
     }
 }
-
-
