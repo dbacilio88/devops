@@ -309,20 +309,22 @@ En Java, una expresión lambda es una característica introducida en Java 8 que 
 argumento que se pasa a un método o se utiliza en una variable. Las expresiones lambda son una manera concisa de
 representar una función o una instancia de una interfaz funcional (una interfaz con un solo método abstracto).
 
-- Interface funcional:
-    - Es una interfaz que dispone de un solo método abstracto, puede tener métodos por default y privados.
-    - Podemos avisarle al compilador de manera opcional que será una interface funcional anotándola
-      con ```@FuncionalInterface```
+### Interface funcional:
 
-- Expresión lambda
-    - Es una subrutina definida que no está enlazada a un identificador.
-    - Son la implementación de una interfaz funcional mediante una clase anónima con la siguiente:
-      sintaxis: ```(x,y)-> return x+y;```
-        - ```(a.b)```: Parámetros (Solo si son requeridos).
-        - ```->```: Operador flecha para indicar que será una expresión lambda.
-        - ```{}```: Cuerpo de la expresión. Si el cuerpo tiene más de una línea deben abrir y cerrar {}.
-    - Podemos referenciar métodos anónimos o métodos sin nombre,lo que nos permite escribir código más claro y conciso
-      que cuando usamos clases anónimas.
+- Es una interfaz que dispone de un solo método abstracto, puede tener métodos por default y privados.
+- Podemos avisarle al compilador de manera opcional que será una interface funcional anotándola
+  con ```@FuncionalInterface```
+
+### Expresión lambda
+
+- Es una subrutina definida que no está enlazada a un identificador.
+- Son la implementación de una interfaz funcional mediante una clase anónima con la siguiente:
+  sintaxis: ```(x,y)-> return x+y;```
+    - ```(a.b)```: Parámetros (Solo si son requeridos).
+    - ```->```: Operador flecha para indicar que será una expresión lambda.
+    - ```{}```: Cuerpo de la expresión. Si el cuerpo tiene más de una línea deben abrir y cerrar {}.
+- Podemos referenciar métodos anónimos o métodos sin nombre,lo que nos permite escribir código más claro y conciso
+  que cuando usamos clases anónimas.
 
 
 - Beneficios de Usar Expresiones Lambda
@@ -427,7 +429,7 @@ public class AppLambda {
 }
 ```
 
-- Expresiones Genéricas
+### Expresiones Genéricas
 
 ```java
 package com.bxcode.lambda.contracts;
@@ -543,21 +545,23 @@ public class AppLambda {
 }
 ```
 
-- Referencias a métodos:
-    - Es una funcionalidad de java 8 que puede sustituir a una expresión lambda cuya única instrucción consiste en la
-      llamada a un método.
-    - El compilador infiere las variables dadas por parámetro en el argumento del método.
-    - Lambda: o->System.out.print(o)
-    - Método Referenciado: o->System.out::print
-    - ```"MyClassOrObject::methodName" MyClassOrObject => Clase u Objeto, :: => Los métodos referenciados se especifica con doble punto (::) y methodName => Nombre del método a referenciar```
-- Existen 4 tipos:
+### Referencias a métodos:
 
-  | **Tipo de Referencia**                        | **Referencia método**                | **Expresión lamba**                        |
-    |-----------------------------------------------|--------------------------------------|--------------------------------------------|
-  | [Método de un objeto](#Referencia-de-Método)  | ```var r = new Random() r::nexInt``` | ```var r=new Random() n -> r.nextInt(n)``` |
-  | [Método estático](#Método-Estático)           | ```String::ValueOf```                | ```s-> String.valueOf(s)```                |
-  | [Método constructor](#Referencia-Constructor) | ```Person::new```                    | ```s-> new Person(s)```                    |
-  | [Método arbitrario](#Método-arbitrario)       | ```String::equals```                 | ```(s1,s2)-> s1.equals(s2)```              |
+- Es una funcionalidad de java 8 que puede sustituir a una expresión lambda cuya única instrucción consiste en la
+  llamada a un método.
+- El compilador infiere las variables dadas por parámetro en el argumento del método.
+- Lambda: o->System.out.print(o)
+- Método Referenciado: o->System.out::print
+- ```"MyClassOrObject::methodName" MyClassOrObject => Clase u Objeto, :: => Los métodos referenciados se especifica con doble punto (::) y methodName => Nombre del método a referenciar```
+
+#### Existen 4 tipos:
+
+| **Tipo de Referencia**                        | **Referencia método**                | **Expresión lamba**                        |
+                  |-----------------------------------------------|--------------------------------------|--------------------------------------------|
+| [Método de un objeto](#Referencia-de-Método)  | ```var r = new Random() r::nexInt``` | ```var r=new Random() n -> r.nextInt(n)``` |
+| [Método estático](#Método-Estático)           | ```String::ValueOf```                | ```s-> String.valueOf(s)```                |
+| [Método constructor](#Referencia-Constructor) | ```Person::new```                    | ```s-> new Person(s)```                    |
+| [Método arbitrario](#Método-arbitrario)       | ```String::equals```                 | ```(s1,s2)-> s1.equals(s2)```              |
 
 ### Referencia de Método:
 
@@ -726,4 +730,277 @@ public class AppLambda {
 }
 ```
 
+### Paquete java.util.function
 
+El paquete `java.util.function` está presente a partir de la version 1.8 JDK y nos provee un conjunto de interfaces
+funcionales, cada una con un propósito distinto.
+
+En Java, una interfaz funcional es una interfaz que tiene un único método abstracto. Las interfaces funcionales son
+fundamentales en la programación funcional y son la base para las expresiones lambda y las referencias a métodos. Las
+expresiones lambda proporcionan una forma concisa de representar una instancia de una interfaz funcional.
+
+#### Interface Function<T,V>
+
+- `Interface Function<T,V>`: Representa una función que acepta un argumento y produce un resultado.
+- `R apply(T t)`: Aplica la función dada un argumento
+- `compose(Function<? supper V,? extends T> before)`: Primero aplica la función pasada por argumento y después el método
+  apply
+- `andthen(Function<? supper R,? extends V> after)`: Después de aplicar la función apply, aplica la función dada por
+  parámetro.
+
+```java
+package com.bxcode.functions.test;
+
+import lombok.extern.log4j.Log4j2;
+
+import java.util.function.Function;
+
+/**
+ * AppFunctions
+ * <p>
+ * AppFunctions class.
+ * <p>
+ * THIS COMPONENT WAS BUILT ACCORDING TO THE DEVELOPMENT STANDARDS
+ * AND THE BXCODE APPLICATION DEVELOPMENT PROCEDURE AND IS PROTECTED
+ * BY THE LAWS OF INTELLECTUAL PROPERTY AND COPYRIGHT...
+ *
+ * @author Bxcode
+ * @author dbacilio88@outlook.es
+ * @since 27/05/2024
+ */
+
+@Log4j2
+public class AppFunctions {
+
+    static Function<Integer, Integer> sum = n -> n + 10;
+    static Function<Integer, Integer> multiply = n -> n * 10;
+
+    public static void main(String[] args) {
+        //method apply
+        log.info("sum {}", sum.apply(10));
+        log.info("multiply {}", multiply.apply(2));
+        //method andThen
+        log.info("andThen multiply {}", multiply.andThen(sum).apply(4));
+        log.info("andThen sum {}", sum.andThen(multiply).apply(4));
+        //method compose
+        log.info("compose multiply {}", multiply.compose(sum).apply(4));
+        log.info("compose sum {}", sum.compose(multiply).apply(4));
+    }
+}
+```
+
+```java 
+package com.bxcode.functions.test;
+
+import com.bxcode.dto.Product;
+import lombok.extern.log4j.Log4j2;
+
+import java.io.*;
+import java.util.Arrays;
+import java.util.function.Function;
+
+/**
+ * AppFunctions
+ * <p>
+ * AppFunctions class.
+ * <p>
+ * THIS COMPONENT WAS BUILT ACCORDING TO THE DEVELOPMENT STANDARDS
+ * AND THE BXCODE APPLICATION DEVELOPMENT PROCEDURE AND IS PROTECTED
+ * BY THE LAWS OF INTELLECTUAL PROPERTY AND COPYRIGHT...
+ *
+ * @author Bxcode
+ * @author dbacilio88@outlook.es
+ * @since 27/05/2024
+ */
+
+@Log4j2
+public class AppFunctions {
+
+    static Function<Product, ByteArrayOutputStream> serializer = p -> {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        try (ObjectOutputStream oos = new ObjectOutputStream(stream)) {
+            oos.writeObject(p);
+            oos.flush();
+        } catch (IOException e) {
+            log.error("error serializer: {}", e.getMessage());
+        }
+
+        return stream;
+    };
+
+    static Function<ByteArrayInputStream, Product> deserializer = p -> {
+        try (ObjectInputStream ois = new ObjectInputStream(p)) {
+            return (Product) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            log.error("error deserializer: {}", e.getMessage());
+        }
+        return null;
+    };
+
+    public static void main(String[] args) {
+        ByteArrayOutputStream stream = serializer.apply(Product.builder()
+                .id(1L)
+                .name("serializer product")
+                .description("serializer product")
+                .build());
+
+
+        //trasmitir a través de la red
+        log.info("stream serializer {}", Arrays.toString(stream.toByteArray()));
+
+        Product product = deserializer.apply(new ByteArrayInputStream(stream.toByteArray()));
+
+        log.info("stream deserializer {}", product);
+    }
+}
+```
+
+#### InterfaceBiFunction<T,U,R>
+
+- Representa una función que acepta dos argumentos y produce un resultado. Esta es la especialización de dos aridades de
+  Function.
+
+```java
+package com.bxcode.functions.test;
+
+import lombok.extern.log4j.Log4j2;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.BiFunction;
+
+
+/**
+ * AppFunctions
+ * <p>
+ * AppFunctions class.
+ * <p>
+ * THIS COMPONENT WAS BUILT ACCORDING TO THE DEVELOPMENT STANDARDS
+ * AND THE BXCODE APPLICATION DEVELOPMENT PROCEDURE AND IS PROTECTED
+ * BY THE LAWS OF INTELLECTUAL PROPERTY AND COPYRIGHT...
+ *
+ * @author Bxcode
+ * @author dbacilio88@outlook.es
+ * @since 27/05/2024
+ */
+
+@Log4j2
+public class AppFunctions {
+
+
+    static BiFunction<Integer, Integer, Integer> multiply = (a, b) -> a * b;
+
+    static <T, U, R> List<R> combiner(List<T> l1, List<U> l2, BiFunction<T, U, R> function) {
+
+        List<R> result = new ArrayList<>();
+
+        for (int i = 0; i < l1.size(); i++) {
+            result.add(function.apply(l1.get(i), l2.get(i)));
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        List<String> letters = Arrays.asList("a", "b", "c", "d");
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4);
+        List<String> result = combiner(letters, numbers, (l1, l2) -> l1 + l2);
+        log.info("list combinator {}", result);
+
+        // multiply:
+        log.info("list multiply {}", multiply.apply(2, 3));
+
+    }
+}
+```
+
+#### Interface Predicate<T>
+
+- En Java es una interfaz funcional que representa un predicado (una función que devuelve un valor booleano) de un solo
+  argumento. Es una parte fundamental del paquete java.util.function y se utiliza ampliamente en el API de Streams de
+  Java para filtrar datos y realizar otras operaciones que implican la evaluación de condiciones.
+
+- función lógica: Representa un predicado, devuelve un boolean.
+- La interfaz Predicate<T> es una herramienta poderosa en Java para representar condiciones booleanas y trabajar con
+  ellas de manera funcional. Su integración con la API de Streams permite un manejo más limpio y eficiente de las
+  colecciones de datos.
+- Esta es una interfaz funcional y, por lo tanto, puede ser utilizada como el objetivo de asignación para una expresión
+  lambda o una referencia a un método.
+
+```java
+package com.bxcode.functions.test;
+
+import lombok.extern.log4j.Log4j2;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+
+/**
+ * AppFunctions
+ * <p>
+ * AppFunctions class.
+ * <p>
+ * THIS COMPONENT WAS BUILT ACCORDING TO THE DEVELOPMENT STANDARDS
+ * AND THE BXCODE APPLICATION DEVELOPMENT PROCEDURE AND IS PROTECTED
+ * BY THE LAWS OF INTELLECTUAL PROPERTY AND COPYRIGHT...
+ *
+ * @author Bxcode
+ * @author dbacilio88@outlook.es
+ * @since 27/05/2024
+ */
+
+@Log4j2
+public class AppFunctions {
+
+
+    static Predicate<Integer> isGreaterThan100 = n -> n > 100;
+
+    static Predicate<Integer> isLessThan10 = n -> n < 10;
+    static Predicate<String> hasLengthGreaterThanThree = n -> n.length() > 3;
+
+    static Predicate<Integer> isBetweenThan10And100 = isGreaterThan100.or(isLessThan10);
+
+    public static void main(String[] args) {
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100, 200, 300));
+        List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David", "Edward");
+
+
+        List<Integer> filter = numbers.stream()
+                .filter(isLessThan10)
+                .collect(Collectors.toList());
+
+        List<Integer> negate = numbers.stream()
+                .filter(isBetweenThan10And100.negate())
+                .collect(Collectors.toList());
+
+        List<String> filterName = names.stream()
+                .filter(hasLengthGreaterThanThree)
+                .collect(Collectors.toList());
+
+        numbers.removeIf(isGreaterThan100);
+
+        //result numbers:
+        log.info("list numbers filter {}", filter);
+        log.info("list numbers negate {}", negate);
+        log.info("list numbers removeIf {}", numbers);
+        log.info("list filterName > 3 {}", filterName);
+    }
+}
+```
+
+#### Interface Consumer<T>
+
+- Representa una operación que acepta un único argumento y no devuelve ningún resultado.
+
+#### Interface Supplier<T>
+
+- Representa una operación que provee un objeto y no requiere parámetros
+
+#### Interface UnaryOperator<T>
+
+- Esta interfaz extiende de la interface Function y en esencia es lo mismo, con la diferencia que el argumento de tipo
+  especificado será la entrada pasada por parámetro y el tipo de retorno.
