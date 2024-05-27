@@ -577,12 +577,12 @@ public class AppLambda {
     - ```"MyClassOrObject::methodName" MyClassOrObject => Clase u Objeto, :: => Los métodos referenciados se especifica con doble punto (::) y methodName => Nombre del método a referenciar```
 - Existen 4 tipos:
 
-  | **Tipo de Referencia**      | **Referencia método**                | **Expresión lamba**                        |
-    |-----------------------------|--------------------------------------|--------------------------------------------|
-  | [Método estático](Estático) | ```String::ValueOf```                | ```s-> String.valueOf(s)```                |
-  | Método de un objeto         | ```var r = new Random() r::nexInt``` | ```var r=new Random() n -> r.nextInt(n)``` |
-  | Método arbitrario           | ```String::equals```                 | ```(s1,s2)-> s1.equals(s2)```              |
-  | Método constructor          | ```Person::new```                    | ```s-> new Person(s)```                    |
+  | **Tipo de Referencia**       | **Referencia método**                | **Expresión lamba**                        |
+    |------------------------------|--------------------------------------|--------------------------------------------|
+  | [Método estático](#Estático) | ```String::ValueOf```                | ```s-> String.valueOf(s)```                |
+  | Método de un objeto          | ```var r = new Random() r::nexInt``` | ```var r=new Random() n -> r.nextInt(n)``` |
+  | Método arbitrario            | ```String::equals```                 | ```(s1,s2)-> s1.equals(s2)```              |
+  | Método constructor           | ```Person::new```                    | ```s-> new Person(s)```                    |
 
 Referencia de método:
 
@@ -627,7 +627,7 @@ public class AppLambda {
 
 ```
 
-[Estático]
+Estático
 
 ```java
 package com.bxcode.lambda.test;
