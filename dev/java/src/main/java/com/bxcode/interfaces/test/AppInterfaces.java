@@ -37,7 +37,6 @@ public class AppInterfaces {
         EmployeeDatabaseService employee = new EmployeeDatabaseService();
         ProductDatabaseService product = new ProductDatabaseService();
 
-
         log.info("postgres {} ", postgres.getById(1L));
         log.info("mongo: {}", mongo.getAll());
 
@@ -48,7 +47,7 @@ public class AppInterfaces {
         log.info(Employee.class.getName());
 
 
-        IGenericDatabaseService<String> anonymousService = new IGenericDatabaseService<>() {
+        IGenericDatabaseService<String> anonymousService = new IGenericDatabaseService<String>() {
             @Override
             public String getById(long id) {
                 return "Id anonymousService";
@@ -64,7 +63,6 @@ public class AppInterfaces {
         IGenericDatabaseService<Employee> service = new EmployeeDatabaseService();
 
         log.info("service employee: {}", service.getAll());
-
     }
 }
 
