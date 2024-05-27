@@ -13,6 +13,7 @@
 .idea/**/shelf
 
 aws/iam/*
+user/*
 
 # AWS User-specific
 .idea/**/aws.xml
