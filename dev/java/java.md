@@ -557,7 +557,7 @@ public class AppLambda {
 #### Existen 4 tipos:
 
 | **Tipo de Referencia**                        | **Referencia método**                | **Expresión lamba**                        |
-                  |-----------------------------------------------|--------------------------------------|--------------------------------------------|
+|-----------------------------------------------|--------------------------------------|--------------------------------------------|
 | [Método de un objeto](#Referencia-de-Método)  | ```var r = new Random() r::nexInt``` | ```var r=new Random() n -> r.nextInt(n)``` |
 | [Método estático](#Método-Estático)           | ```String::ValueOf```                | ```s-> String.valueOf(s)```                |
 | [Método constructor](#Referencia-Constructor) | ```Person::new```                    | ```s-> new Person(s)```                    |
