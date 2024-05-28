@@ -1,0 +1,549 @@
+{
+	"info": {
+		"_postman_id": "24705188-d79e-4987-a317-7319603027c0",
+		"name": "node-mongo-redis-bq",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18542737"
+	},
+	"item": [
+		{
+			"name": "document-person",
+			"item": [
+				{
+					"name": "person-all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/person/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"person",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "person-save",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"document\": \"44444444\",\r\n    \"name\": \"w\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/person/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"person",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "person-find-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/person/id/65c1210cd6b60ea401d95f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"person",
+								"id",
+								"65c1210cd6b60ea401d95f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "person-find-uuid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/person/uuid/{{environment-uuid}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"person",
+								"uuid",
+								"{{environment-uuid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "person-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/person/delete/{{environment-uuid}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"person",
+								"delete",
+								"{{environment-uuid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "person-update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"document\": \"44910164\",\r\n    \"name\": \"Christian\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/person/update/{{environment-uuid}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"person",
+								"update",
+								"{{environment-uuid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category-documents",
+			"item": [
+				{
+					"name": "category-all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/category/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"category",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category-save",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"REGLAMENTOS_CODE\",\r\n    \"name\": \"REGLAMENTOS\",\r\n    \"description\": \"REGLAMENTOS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/category/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"category",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category-find-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/category/id/65c1210cd6b60ea401d95f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"category",
+								"id",
+								"65c1210cd6b60ea401d95f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category-find-uuid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/category/uuid/dad495a7-9617-444c-9f8f-04b5aa754264",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"category",
+								"uuid",
+								"dad495a7-9617-444c-9f8f-04b5aa754264"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/category/delete/dad495a7-9617-444c-9f8f-04b5aa754264",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"category",
+								"delete",
+								"dad495a7-9617-444c-9f8f-04b5aa754264"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category-update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"document\": \"44910164\",\r\n    \"name\": \"Christian\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/category/update/dad495a7-9617-444c-9f8f-04b5aa754264",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"category",
+								"update",
+								"dad495a7-9617-444c-9f8f-04b5aa754264"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "specialty-documents",
+			"item": [
+				{
+					"name": "specialty-all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/specialty/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"specialty",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "specialty-save",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"T-COMP-INFO\",\r\n    \"name\": \"TEC COMP INFO\",\r\n    \"description\": \"TÉCNICO COMPUTACION E INFORMATICA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/specialty/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"specialty",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "specialty-find-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/specialty/id/65c1210cd6b60ea401d95f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"specialty",
+								"id",
+								"65c1210cd6b60ea401d95f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "specialty-find-uuid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/specialty/uuid/dad495a7-9617-444c-9f8f-04b5aa754264",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"specialty",
+								"uuid",
+								"dad495a7-9617-444c-9f8f-04b5aa754264"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "specialty-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/specialty/delete/dad495a7-9617-444c-9f8f-04b5aa754264",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"specialty",
+								"delete",
+								"dad495a7-9617-444c-9f8f-04b5aa754264"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "specialty-update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"document\": \"44910164\",\r\n    \"name\": \"Christian\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/specialty/update/dad495a7-9617-444c-9f8f-04b5aa754264",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"specialty",
+								"update",
+								"dad495a7-9617-444c-9f8f-04b5aa754264"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

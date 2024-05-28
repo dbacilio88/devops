@@ -1,0 +1,885 @@
+BANCO DE PREGUNTAS EXAMEN DE
+CONOCIMIENTOS
+SUBOFICIALES
+ESPECIALIDAD: TÉCNICO COMPUTACION E INFORMATICA
+BANCO DE PREGUNTAS
+SUBOFICIALES
+ESPECIALIDAD: TÉCNICO EN COMPUTACIÓN E INFORMÁTICA
+ORGANIZACIÓN Y ARQUITECTURA DE COMPUTADORAS
+(STALLINGS WILLIAM)
+1. Según la arquitectura de computadoras, es la operación de cada
+componente individual como parte de la estructura. Se refiere a:
+A. Funcionamiento
+B. Sistemas Complejos
+C. Estructura
+D. Almacenamiento
+E. Memoria
+2. Como parte del funcionamiento de un de un computador encontramos
+el procesamiento de datos, el cual dentro de su entorno operativo
+cuenta con métodos o tipos fundamentales de procesado de datos.
+Señale la respuesta correcta.
+A. Procesamiento de datos, Almacenamiento de datos, Transferencia
+de datos, control.
+B. Sistema de Transferencia de datos, Almacenamiento de datos,
+control, transferencia de datos.
+C. Transferencia de datos, Mecanismo de control, Recurso de
+almacenamiento de datos, Control.
+D. Sistema de transferencia de datos, Mecanismo de control, Recurso de
+almacenamiento de datos, Recurso de almacenamiento de datos,
+Recurso de procesamiento de datos.
+E. Procesamiento de datos, Almacenamiento de datos, control, Recurso
+de almacenamiento de datos.
+3. En referencia a la estructura del computador, es la unidad que controla
+el funcionamiento del computador y lleva a cabo sus funciones de
+procesamiento. Se refiere a:
+A. Unidad Central de procesamiento
+B. Unidad de Memoria principal
+C. Sistema de Interconexión
+D. Unidad de control de datos
+E. Unidad de periféricos de entrada y salida.
+4. En la Organización y Arquitectura de computadoras, la unidad central
+de procesamiento tiene cuatro componentes en su estructura, una de
+ellas se encarga de proporcionar el almacenamiento interno de la CPU.
+Señale la respuesta correcta.
+A. Registros
+B. Interconexiones CPU
+C. Unidad de control
+D. Unidad aritmético-lógica
+E. Periféricos.
+5. En la estructura de interconexión de datos existen cuatro tipos de
+transferencias, una de ellas especifica como el procesador lee datos de
+un dispositivo de E/S a través de un módulo de E/S. A este tipo de
+transferencia se le conoce como:
+A. E/S a procesador
+B. Procesador a Memoria
+C. Memoria a Procesador
+D. Procesador a E/S
+E. E/S
+6. Es considerado como uno de los ejemplos de los subsistemas de entrada
+y salida (E/S) de alta velocidad al que el PCI le proporciona mejores
+prestaciones. Se refiere a:
+A. Los adaptadores de pantalla gráfica
+B. Memoria RAM
+C. Disco Duro
+D. Fuente Poder
+E. Programas
+7. El PCI contiene 49 líneas de señal obligatorias, las cuales se dividen en
+grupos funcionales conocidas como terminales. ¿Qué terminales
+controlan la temporización de las transferencias y proporcionan
+coordinación entre los que las inician y los destinatarios?
+A. De control de la interfaz
+B. De direcciones y datos
+C. De arbitraje
+D. De soporte de caché
+E. De test.
+8. El sistema operativo (SO) tiene dos objetivos bien definidos, bajo ese
+concepto, ¿cuáles son estos dos objetivos?
+A. Comodidad y eficiencia
+B. Planificar procesos y optimizar tareas
+C. Ejecuta los programas y gestiona los recursos
+D. Planificar conexión de memoria
+E. Gestionar procesos de interfaz y eficiencia
+9. Señale el área en la que el sistema operativo proporciona cierta variedad
+de servicios y medios, tales como editores y depuradores, para ayudar al
+programador en la elaboración de programas.
+A. Creación de programas
+B. Ejecución de programas
+C. Acceso a dispositivos de E/S
+D. Acceso controlado a ficheros
+E. Acceso al sistema
+10. Cuál es el sistema operativo que intenta mantener al procesador
+ocupado tanto como sea posible, haciéndolo trabajar en más de un
+programa al mismo tiempo. Este concepto corresponde a:
+A. La multiprogramación.
+B. La pantalla gráfica.
+C. La interconexión.
+D. La monoprogramación.
+E. El PCI.
+11. Los primeros Sistemas Operativos presentaban dos tipos de problemas
+fundamentales, ¿Cuáles son esos dos problemas?
+A. Planificación y Tiempo de preparación
+B. Planificación y control
+C. Programación y reserva
+D. Error de inicio y Pantalla azul
+E. Error de inicio de sesión y control
+12. En relación a los tipos de sistemas, ¿en que sistema el
+usuario/programador interactúa directamente con el computador?
+A. Interactivo
+B. De colas
+C. Multiprogramación
+D. Multiplataforma
+E. Aplicativo
+ARQUITECTURA DE COMPUTADORAS
+(JUAN BERNARDO VASQUEZ)
+13. Consiste en circuitos electrónicos, visualizadores, medios de
+almacenamiento magnéticos y ópticos, equipos electromagnéticos y
+dispositivos de comunicación. Se refiere a:
+A. Hardware de computadoras.
+B. Software de computadoras
+C. Sistemas operativos
+D. Monitor
+E. Teclado
+14. ¿Qué tipo de computadora se le conoce como la versión compacta que
+tiene todos los componentes empaquetados? Marque la alternativa
+correcta:
+A. Computadores portátiles
+B. Computador personal
+C. Computador de sobremesa
+D. Hub
+E. Switch
+15. Es una computadora que, formando parte de una red, provee servicios
+a otras computadoras denominadas clientes. Se refiere a:
+A. Servidores
+B. Switch
+C. Hub
+D. Rack
+E. Firewall
+16. Es una máquina calculadora electrónica rápida que acepta como
+entrada información digitalizada, la procesa de acuerdo con una lista de
+instrucciones almacenada internamente y produce la información de
+salida resultante. Se refiere a:
+A. Computadora.
+B. Memoria RAM.
+C. Disco Duro.
+D. Monitor.
+E. Teclado.
+17. La computadora se conforma por dos elementos principales. ¿Cuáles son
+esos elementos?
+A. Software y Hardware
+B. Software y servidor
+C. Hub y switch
+D. Monitor y teclado
+E. Firewall y software.
+18. Señale cuál de los siguientes enunciados, es un ejemplo de dispositivo de
+salida, que permite a la computadora comunicarse con el usuario.
+A. Monitor
+B. Teclado
+C. Ratón
+D. Tarjeta de video
+E. Software
+19. Señale cual, de los siguientes enunciados, es un dispositivo de entrada
+que permite al usuario introducir información a la computadora.
+A. Escáner
+B. Monitor
+C. Impresora
+D. Graficador
+E. Bocinas
+20. Los tipos más comunes de dispositivos que pueden ser de entrada y salida
+son los de comunicación. Señale cual, de los siguientes enunciados es un
+dispositivo de comunicación.
+A. Módem
+B. Memoria
+C. Teclado
+D. Impresora
+E. Mouse
+21. Indique en que generación, las computadoras basadas en transistores
+son sustituidas por máquinas más pequeñas y poderosas, construidas con
+circuitos integrados.
+A. Tercera generación
+B. Pasada generación.
+C. Cuarta generación
+D. Full generación
+E. Primera generación
+22. Señale en que generación, las computadoras estaban fabricadas con
+bulbos y tarjetas perforadas.
+A. Primera generación
+B. Segunda generación
+C. Octava generación
+D. Cuarta generación
+E. Tercera generación
+23. Cuál es la unidad donde sólo se realizan dos tipos de operaciones,
+denominadas operaciones aritméticas y operaciones lógicas.
+A. Unidad de lógica aritmética
+B. Fuente poder
+C. Unidad de control
+D. CPU
+E. Motheboard
+24. Indique en que generación, las cintas magnéticas y el disco como medio
+de almacenamiento secundario, sustituyeron a las tarjetas perforadas.
+A. Segunda generación
+B. Quinta generación
+C. Cuarta generación
+D. Primera generación
+E. Generación primaria
+25. En relación a la arquitectura de las computadoras, de acuerdo al modelo
+de Von Neumann, la computadora tiene cuatro subsistemas. Señale la
+respuesta correcta:
+A. Memoria, unidad lógica aritmética, unidad de control y
+entrada/salida.
+B. Teclado, mouse, impresora y escáner
+C. Unidad de entrada, unidad de salida, control, y memoria
+D. Unidad de control, CPU, memoria, y unidad de entrada
+E. Unidad de entrada, memoria, teclado y unidad lógica aritmética.
+26. Indique como se le denomina al componente físico de una
+computadora que alberga al chip del procesador, la memoria principal
+y algunas interfaces de entrada y salida.
+A. Motherboard
+B. Bus
+C. USB
+D. Dispositivo de entrada y salida
+E. Timer
+27. Según los tipos de operaciones de la unidad lógica aritmética, a qué tipo
+de operación corresponde la suma, resta, multiplicación, división y elevar
+a la potencia:
+A. Aritméticas
+B. Lógicas
+C. Potenciales
+D. Numéricas
+E. Operacionales
+28. Es conocida como memoria de solo lectura, puesto que los datos en estos
+chips sólo pueden ser leídos y usados, pero no pueden ser cambiados. Se
+refiere a:
+A. ROM
+B. BYTE
+C. Celda
+D. Memoria
+E. RAM
+29. De acuerdo a la clasificación de las computadoras, indique cual es la
+computadora mas potente que existe, construida para procesar
+cantidades enormes de datos.
+A. Maxicomputadora
+B. Minicomputadora
+C. Microcomputadora
+D. Computadora especial
+E. Computadora
+30. Son económicas y tienen la característica deseable de un mainframe.
+Este concepto corresponde a:
+A. Minicomputadoras
+B. Maxicomputadora
+C. Memoria
+D. Servidores
+E. Estaciones de trabajo
+ASPECTOS BASICOS DE NETWORKING
+(CCNA EXPLORATION 4.0)
+31. Las reglas, medio, mensajes y dispositivos que trabajan en forma
+conjunta, son elementos típicos de una:
+A. Red.
+B. Web
+C. Comunicación.
+D. Computadora.
+E. Conversación.
+32. Para que funciona una red, los dispositivos deben estar interconectados.
+Indique a que tipo de red pertenecen las conexiones de red donde se
+utilizan como medio los cables UTP:
+A. Redes cableadas
+B. Redes inalámbricas
+C. Redes de fibra óptica
+D. Red satelital
+E. Red local
+33. Indique cual es el servicio que corresponde al protocolo Extensible
+Messaging and Presence Porotocol (XMPP).
+A. Mensaje instantáneo
+B. Internet
+C. Telefonía IP
+D. World Wide Web (www)
+E. E-mail
+34. Indique cual es el servicio que corresponde al protocolo Session Initiation
+Protocol (SIP).
+A. Telefonía IP
+B. E-mail
+C. Mensaje instantáneo
+D. Internet
+E. World Wide Web (www)
+35. En relación a los dispositivos intermediarios y su rol en la red, señale cual
+de los siguientes enunciados es un dispositivo de red intermediario:
+A. Router
+B. Teclado
+C. Placa madre
+D. Impresora
+E. Servidor
+36. Las redes utilizan principalmente tres tipos de medios para interconectar
+los dispositivos y proporcionar la ruta por la cual pueden transmitirse los
+datos. Estos medios son:
+A. Hilos metálicos dentro de los cables, fibras de vidrio o plásticas y
+transmisión inalámbricas.
+B. Hilos metálicos, hub y servidores
+C. Switch, router y hub
+D. Router, transmisión inalámbrica y servidores
+E. Fibras ópticas, hub y servidores
+37. Existen dos tipos básicos de modelos de networking. Señale la respuesta
+correcta:
+A. Modelos de protocolo y modelos de referencia
+B. Modelos de interferencia y modelos de referencia
+C. Modelos de señal y modelos de control
+D. Modelos de control y modelos de seguridad
+E. Modelos de seguridad y modelos de referencia
+38. Indique cual es el modelo de protocolo en capas para comunicaciones
+de internetwork que se creó a principio de la década de los setenta.
+A. TCP/IP
+B. IP
+C. OSI
+D. ISO
+E. OOI
+39. Es la capa del modelo TCP/IP que admite la comunicación entre distintos
+dispositivos de distintas redes. Se refiere a la capa de:
+A. Acceso a la red
+B. Transporte
+C. Aplicación
+D. Internet
+E. Extranet
+40. Según el modelo TCP/IP, que capa controla los dispositivos del hardware
+y los medios que forman la red.
+A. Acceso a la red
+B. Trasporte
+C. Internet
+D. Aplicación
+E. Puerta de enlace
+41. Es la capa que representa datos para el usuario mas el control de
+codificación y de diálogo. Señale la respuesta correcta:
+A. Aplicación
+B. Transporte
+C. Internet
+D. Puerta de Enlace
+E. Servidor
+42. Es aquel modelo diseñado por la Organización Internacional para la
+Estandarización (ISO) para proporcionar un marco sobre el cual crear una
+suite de protocolos de sistemas abiertos, nos estamos refiriendo al
+modelo:
+A. OSI
+B. ISO
+C. ESO
+D. TCP/IP
+E. Protocolos de Internet
+43. En el modelo OSI, las capas se mencionan con frecuencia por número y
+no por nombre, según este modelo cuantas capas son en total:
+a. 3 capas
+b. 7 capas
+c. 5 capas
+d. 8 capas
+e. 9 capas
+44. Es conocida como la quinta capa del modelo OSI, nos estamos refiriendo
+a la capa de:
+A. Sesión
+B. Transporte
+C. Red
+D. Presentación
+E. Física
+45. Es la segunda capa del modelo OSI, se refiere a la capa de:
+A. Enlace de datos
+B. Sesión
+C. Física
+D. Transporte
+E. Presentación
+46. Es la última capa del modelo OSI, con frecuencia llamada la séptima
+capa. Se refiere a:
+a. Red
+b. Transporte
+c. Aplicación
+d. Enlace de datos
+e. Física
+47. La siguiente dirección: 11000000.10101000.01000000.00001010. Es
+expresada en puntos decimales como:
+A. 192.168.64.10
+B. 172.168.4.20
+C. 198.24.67.4
+D. 192.168.1.1
+E. 192.167.8.9
+48. Existen bloques de direcciones reservados con objetivos específicos y se
+mencionan como reservas para uso futuro (RFC 3330). Se refiere a las
+direcciones:
+A. Experimentales
+B. Multicast
+C. IpV4
+D. IpV6
+E. De red
+49. La dirección 192.168.0.0 a 192.168.255.255, es considerada como un
+bloque de:
+A. Dirección privada
+B. Dirección actual
+C. Host
+D. Servicio
+E. Protocolo
+50. Es un servicio de red que permite a los hosts de la red "pedir prestada"
+una dirección pública para comunicarse con redes externas. Se refiere a:
+A. Traducción de direcciones de red (NAT).
+B. PCI
+C. Dirección Privada
+D. Dirección Pública
+E. Host
+51. Son direcciones diseñadas para ser utilizadas en los hosts de acceso
+público desde internet. Nos estamos refiriendo a las direcciones:
+A. Públicas
+B. Reservadas
+C. Privadas
+D. Experimentales
+52. Es una dirección especial que los hosts utilizan para dirigir el tráfico hacia
+ellos mismos. Se refiere a la dirección de:
+A. Loopback
+B. Puerta de enlace
+C. NAT
+D. Redes públicas
+E. Redes privadas
+53. A principio de los años noventa, el Grupo de trabajo de ingeniería de
+internet (IETF) centró su interés en el agotamiento de direcciones de red
+IPv4 y comenzó a buscar un reemplazo para este protocolo, conocido
+como:
+A. IPv6
+B. Host
+C. TCP/IP
+D. ISO
+E. OSI
+54. Consiste en conexiones virtuales entre los nodos de una red
+independiente de su distribución física, estrechamente relacionada con
+el mecanismo utilizado para administrar el acceso a la red. Se refiere a la
+Topología:
+A. Lógica
+B. Física
+C. Mixta
+D. Real
+E. Serial
+55. Las topologías lógicas y físicas generalmente utilizadas en las redes son:
+A. Punto a punto, Multi-Acceso, Anillo
+B. Multi-Acceso, Anillo, Serial
+C. Estrella, Circular, Punto a punto
+D. Bus, Estrella, Anillo
+E. Punto a punto, Estrella, Bus
+56. En las redes punto a punto, si los datos solo pueden fluir en una dirección
+a la vez, ¿en qué enlace está operando?
+A. Half-duplex
+B. Full duplex
+C. Duplex
+D. Red a red
+E. Enlace de datos
+57. Conecta dos nodos directamente entre sí, los datos pueden operar como
+un enlace half-duplex y como un enlace dúplex. Corresponde a la
+topología:
+A. Punto a punto
+B. Paramétrica
+C. Estrella
+D. Circular
+E. En Red
+58. Es aquella topología donde cada nodo recibe una trama por turno y
+utiliza una técnica de control de acceso al medio llamad paso de tokens.
+Se refiere a la topología:
+A. En anillo
+B. En estrella
+C. En bus
+D. En paralelo
+E. Cableada.
+59. Indique los tres tipos básicos de medios de red en los cuales representan
+los datos.
+A. Cable de cobre, Fibra, Inalámbrico
+B. Fibra, cuerda, red
+C. Cuerda, cable de cobre, red
+D. Host, fibra, inalámbrico
+E. Fibra, cable, router.
+60. Es la capa que produce la representación y agrupación de bits en
+voltajes, radiofrecuencia e impulsos de luz, se ocupa de la señalización y
+los medios de red. Corresponde a la capa:
+A. Física
+B. Lógica
+C. OSI
+D. Segunda
+E. Red
+61. ¿Cuál es el estándar de comunicación de datos que se aplican a los
+medios inalámbricos, comúnmente denominada Wi-Fi?
+A. IEEE estándar 802.11
+B. IEEE estándar 802.15
+C. IEEE estándar 802.17
+D. IEEE estándar 802.18
+E. IEEE estándar 802.16
+62. Es el estándar o protocolo IEEE de una Red de área personal inalámbrica
+(WPAN), comúnmente denominada “Bluetooth”, cuyo emparejamiento
+de dispositivos es a una distancia de 1 a 100 metros. Se refiere al estándar:
+A. 802.15.
+B. 904.16.
+C. 602.11.
+D. 405.13.
+E. 708.11.
+63. Cuál es la banda de frecuencia del protocolo o estándar IEEE 802.11g,
+cuyos dispositivos operan en la misma radiofrecuencia?
+A. 2.4 GHz.
+B. 5 GHz.
+C. 2.5 GHz.
+D. 5.3 GHz.
+E. 8 GHz.
+64. Cuál es la velocidad máxima ofrecida por el protocolo o estándar IEEE
+802.11b?
+A. 11 Mbps.
+B. 100 Mbps.
+C. 54 Mbps.
+D. 210 Mbps.
+E. 20 Mbps.
+FUNDAMENTOS DE REDES
+(BRUCE HALLBERG)
+65. Es el tipo de relaciones entre las redes, mediante el cual las
+computadoras se comunican entre sí al mismo nivel, poniendo a
+disposición sus propios recursos, por ejemplo: archivos, impresoras,
+directorios, etc. Se refiere a la red de:
+A. Igual a igual
+B. Área local y pública
+C. Área privada
+D. Red pública
+E. Distribución
+66. Es una red en la que todos los recursos de red disponibles residen y están
+administrados centralmente. Se refiere a la red:
+A. Cliente/servidor
+B. Servidor
+C. Estrella
+D. LAN
+E. WAN
+67. Indique cual de las siguientes alternativas es una de las ventajas de las
+redes de igual a igual.
+A. Utilizan hardware de cómputo más barato.
+B. Son muy seguras
+C. Pueden afectar el desempeño del usuario
+D. Menos redundancia
+E. Fácil de respaldar.
+68. Indique cual de las siguientes alternativas es una ventaja de las redes
+cliente/servidor.
+A. Son muy seguras
+B. Fácil acceso
+C. Instalación rápida
+D. Estructuradas
+E. Públicas
+69. El correo electrónico es una de las características de las redes y se dividen
+en dos tipos:
+A. Basados en archivos y cliente/servidor
+B. Servidor y host
+C. Sistema de acceso remoto y NAT
+D. Conexión simple y cliente
+E. Conexión de escritorio remoto
+70. ¿Cuál es la característica de la red que utilizan los usuarios para acceder
+a sus archivos y correos electrónicos cuando se encuentra de viaje?
+A. Acceso remoto
+B. Correo electrónico
+C. Servicios de aplicación
+D. Aplicación
+E. Compartición de impresoras
+71. ¿Qué red con enfoque interno imita a una red de internet?
+A. Intranet
+B. Extranet
+C. Internet
+D. NET
+E. Firewall
+72. En relación a los componentes del hardware de la red, ¿Cuál es el
+nombre de la computadora que lleva a cabo funciones de red para otras
+computadoras?
+A. Servidores
+B. Clientes
+C. Switch
+D. Firewall
+E. Router
+73. Según los componentes de hardware de una red, ¿Cuál es el
+componente de red que se encarga de direccionar los paquetes de
+datos de una red a otra?
+A. Ruteador
+B. Servidor
+C. Hub
+D. Switch
+E. Concentrador
+74. ¿Qué dispositivo de red es similar a un concentrador, sin embargo, todas
+las conexiones de red se encuentran en su propio dominio de colisión?
+A. Switch
+B. Router
+C. Hub
+D. IDS
+E. IPS
+75. ¿De cuantos bits de longitud son las direcciones IP?
+A. 32
+B. 34
+C. 26
+D. 45
+E. 33
+76. Indique cuál de las siguientes alternativas es el tipo de dominio para
+entidades militares.
+A. .mil
+B. .gov
+C. .edu
+D. .org
+E. .pe
+77. Para evitar que los administradores cometieran el error de definir
+direcciones conflictivas en los nodos de la red, se inventó un servicio.
+¿Cuál es el nombre de este servicio?
+A. Protocolo Dinámico de Configuración del Host
+B. Protocolo de control de transporte
+C. Internet
+D. Puerta de enlace
+E. Acceso remoto
+78. Es un protocolo que se encuentra en la capa de aplicación y controla las
+transacciones entre un cliente de la web y un servidor de la web. Se
+refiere al protocolo de:
+A. Transferencia de hipertexto
+B. Datos
+C. Físico
+D. Acceso
+E. Enlace
+79. Señale cuál de los siguientes enunciados es una desventaja del protocolo
+VoIP.
+A. No existe entrega garantizada
+B. Los paquetes siempre llegan a su destino
+C. Los paquetes nunca llegan
+D. No tienen calidad
+E. No son eficientes.
+80. Es una conexión que se lleva a cabo a través de una red compartida o
+pública y que a su vez encripta los datos para que solo el cliente y el
+servidor puedan leerlo. Se refiere a las conexiones:
+A. VPN
+B. TCP
+C. UDP
+D. IP
+E. Red pública
+81. ¿Indique cual es de las siguientes alternativas es uno de los protocolos de
+túnel más populares que se utilizan en las VPN?
+A. Protocolo de túnel de la capa dos (L2TP)
+B. Protocolo sesión
+C. Protocolo aplicativo
+D. Protocolo TCP/IP
+E. Protocolo físico
+INTRODUCCION A LAS REDES INALAMBRICAS
+(TECH PEDIA- JORDI SALAZAR)
+82. Son redes inalámbricas de área personal, que se basan en el estándar
+IEEE 802.15 y se caracterizan por su bajo consumo de energía y también
+una baja velocidad de transmisión, se refiere a las redes inalámbricas:
+A. WPAN.
+B. IG.
+C. WIFI.
+D. WLAN.
+E. WEP.
+83. Son redes inalámbricas diseñadas para proporcionar acceso inalámbrico
+en zonas con un rango típico de hasta 100 metros y se utilizan sobre todo
+en el hogar, la escuela, una sala de ordenadores o entornos de oficina.
+Se refiere a las redes inalámbricas:
+A. WLAN
+B. WiFi
+C. WINAMP
+D. WAMP
+E. WAP
+84. Son redes inalámbricas de área metropolitana y se basan en el estándar
+IEEE 802.16, se refiere a redes inalámbricas:
+A. WMAN
+B. WLAN
+C. WPAN
+D. WAN
+E. WINAMP
+85. Fue la generación de telefonía móvil, diseñada exclusivamente para las
+llamadas de voz, corresponde a la generación:
+A. 1G.
+B. GSM.
+C. 2.5G.
+D. 3G.
+E. 4G.
+86. Es la generación que proporciona velocidades de hasta 1Gbps y
+cualquier tipo de servicio en cualquier momento y lugar de acuerdo con
+las necesidades del usuario. Se refiere a:
+A. 4G.
+B. 5G.
+C. GPRS.
+D. 3G.
+E. GSM.
+87. Como se llama la medida de seguridad de las redes inalámbricas que se
+logra mediante la protección del contenido de los datos con el cifrado.
+A. La confidencialidad.
+B. El parafraseo.
+C. La prevención.
+D. La protección.
+E. El contenido.
+88. ¿Cuál es el elemento de las comunicaciones seguras dentro de una red
+inalámbrica que tiene la capacidad de asegurar que los mensajes con
+entregados sin alteración?
+A. Integridad
+B. Confidencialidad
+C. Disponibilidad
+D. Certeza
+E. Firmware
+89. Cuál fue el primer método de encriptación para hacer seguras las redes
+WILAN.
+A. WEP.
+B. Protecc.
+C. Acces WAP.
+D. Servidor Grafico.
+E. Confidencialidad.
+90. Según la lista básica de clasificación de los métodos de seguridad Wi-Fi,
+¿cuál es el peor método de seguridad?
+A. Red abierta.
+B. AES.
+C. Publica.
+D. Privada.
+E. WPA.
+91. Según la lista de clasificación de los métodos de seguridad Wi-Fi, ¿Cuál
+es el mejor método de seguridad?
+A. WPA2 + AES
+B. WPA + AES
+C. WEP
+D. Red abierta
+E. Red publica
+MANTENIMIENTO DE COMPUTADORES
+(ISBN 978-STIVEN ARMERO)
+92. Como parte del mantenimiento preventivo, ¿cada qué periodo se
+recomienda que se realice el mantenimiento del computador?
+A. No superior a 3 meses.
+B. Una vez al año.
+C. Dos veces al año.
+D. cada 4 meses.
+E. Mensualmente.
+93. Es una de las tareas que se llevan a cabo durante el mantenimiento
+preventivo físico de un computador. Se refiere a:
+A. Limpieza de las unidades de almacenamiento.
+B. Actualizar los controladores.
+C. Verificación del virus.
+D. Instalar programas.
+E. Eliminar Papelera.
+94. Son aquellas que van sujetas a la torre por medio de tornillos en su panel
+posterior, las cuales deben ser retirados con un destornillador de estrella
+o tipo Phillips. Se refiere a:
+A. Tarjetas de Expansión y Aceleradoras Gráficas.
+B. Sistemas de redes.
+C. Teclas.
+D. Discos duros.
+E. Monitor.
+95. Abarca la limpieza del teclado, el mouse y el monitor, donde se
+recomienda no desarmar ninguno de los componentes mencionados
+anteriormente. Se refiere a la limpieza:
+A. Externa.
+B. Protocolar.
+C. Interna.
+D. Preventiva.
+E. De cumplimiento.
+96. Es el encargado de asignar los recursos físicos o el hardware para el
+cumplimiento de funciones, así como también facilitar el uso del
+computador proporcionando una interfaz al usuario. Se refiere a:
+A. Software del sistema.
+B. Sistema de redes.
+C. Aplicativos de programas.
+D. Intranet.
+E. Programación.
+97. Es el software que nos permite realizar tareas específicas en el sistema
+como por ejemplo los programas como Excell, Word, Power Point y otros.
+Se refiere al software de:
+A. Aplicación.
+B. Prevención.
+C. Redes.
+D. Ejecución.
+E. Intranet.
+98. Sobre la gestión de usuarios, como se denomina al usuario que tiene
+control total del equipo y el sistema operativo, pudiendo instalar y
+desinstalar software y configuración del sistema.
+A. Usuario administrador.
+B. Usuario invitado.
+C. Usuario local.
+D. Usuario infiltrado.
+E. Usuario por defecto.
+99. Cuánto de espacio mínimo disponible debe tener el disco duro para no
+influir negativamente en su rendimiento, siendo su capacidad de 320 GB.
+A. 64 GB.
+B. 54 GB.
+C. 6 GB.
+D. 40 GB.
+E. 80 GB.
+100. Al realizar mantenimiento de software, el técnico especialista debe
+realizar la limpieza del directorio temporal, siendo así, ¿qué debe escribir
+en la ventana de “ejecutar” para acceder al directorio?
+A. %TEMP%.
+B. LIMPIAR%.
+C. %TEMPORAL.
+D. %BORRA TEMP%.
+E. %TEMPO%.
+MANUAL DE MICROSOFT OFFICE
+(JOHN PAUL MOSCOSO)
+101. Indique en cuál de las siguientes alternativas, se describe la secuencia
+del comando para insertar una portada en un cualquier documento de
+Word.
+A. Hacer clic en Insertar - clic en portada – clic en páginasseleccionar el diseño de la portada.
+B. Hacer clic en diseño - clic en documento – seleccionar el diseño.
+C. Hacer clic en páginas - clic en página en blanco – seleccionar la
+página.
+D. Hacer clic en disposición - clic en herramienta – seleccionar diseño.
+E. Hacer clic en herramienta - clic en encabezado – seleccionar el
+número.
+102. Señale cual es la información que se puede editar en la página de
+portada en cualquier documento de Word.
+A. Título del documento, subtitulo del documento, fecha y autor.
+B. Título del archivo, numero del documento, autor.
+C. Subtitulo de la página, archivo y número de página.
+D. Pie de página, encabezado y numero.
+E. Título de la portada y encabezado.
+103. Indique cuál de las siguientes alternativas, no corresponde a una
+finalidad de insertar encabezado en un documento de Word.
+A. Referencias bibliográficas.
+B. Mostrar el nombre del autor.
+C. fecha de creación del documento.
+D. Título del documento.
+E. Nombre de la compañía.
+103. Teniendo en cuenta los archivos de Word utilizados para insertar
+encabezado, ¿qué extensión tiene los archivos guardados en Word?
+A. *.DOCX.
+B. *.EXCLL.
+C. *.XOC.
+D. *.TXT.
+E. *.WIN.
+104. Las notas de un alumno se encuentran registradas en una hoja de
+cálculo de Excel, las cuales están ubicadas en las celdas C1, C2, C3, C4
+y C5. ¿Que formula se aplicaría para obtener el promedio del alumno?
+A. =PROMEDIO (C1:C5).
+B. =IGUAL (C1; C7).
+C. =PROMEDIO (C1:C8).
+D. +SUMA (C4:C1).
+E. *DIVIDE = (C1-C2…).
+105. Indique cuales son las teclas empleadas para guardar una hoja de
+cálculo de Excel:
+A. Ctrl + G.
+B. Ctrl + B.
+C. Ctrl + E.
+D. Ctrl + A.
+E. Ctrl + U.
+106. En la hoja de cálculo de Excel se desea agregar gráficos que represente
+las estadísticas sobre el mantenimiento de equipos de ingeniería a nivel
+nacional, ¿cuál es la secuencia de comandos a ejecutar?
+A. Selección las celdas donde están los datos - clic en insertar – clic
+en el gráfico que se ajuste a su necesidad.
+B. Hacer clic en documento - selección las celdas – clic en diseño.
+C. Insertar imagen - clic en insertar - selección las celdas.
+D. Selecciono la columna, clic en ajuste a su necesidad.
+E. Clic en página- insertar pie y encabezado.
+107. Son botones que pueden resultar muy útiles cuando la presentación en
+PowerPoint está destinada a ser expuesta al público, que permiten
+moverse en forma libre una diapositiva a otra. Se refiere a los botones
+de:
+A. Acción.
+B. Llamadas.
+C. Estrellas.
+D. Flechas.
+E. diagrama de flujos.
+108. En PowerPoint, una forma de salir de la presentación es a través de
+presionar la tecla:
+A. Escape.
+B. Espaciadora.
+C. Shift.
+D. Intro.
+E. Suprimir.
+TARJETA DE RESPUESTAS
+Pregunta Respuesta Pregunta Respuesta Pregunta Respuesta
+1 A 35 A 69 A
+2 A 36 A 70 A
+3 A 37 A 71 A
+4 A 38 A 72 A
+5 A 39 A 73 A
+6 A 40 A 74 A
+7 A 41 A 75 A
+8 A 42 A 76 A
+9 A 43 A 77 A
+10 A 44 A 78 A
+11 A 45 A 79 A
+12 A 46 A 80 A
+13 A 47 A 81 A
+14 A 48 A 82 A
+15 A 49 A 83 A
+16 A 50 A 84 A
+17 A 51 A 85 A
+18 A 52 A 86 A
+19 A 53 A 87 A
+20 A 54 A 88 A
+21 A 55 A 89 A
+22 A 56 A 90 A
+23 A 57 A 91 A
+24 A 58 A 92 A
+25 A 59 A 93 A
+26 A 60 A 94 A
+27 A 61 A 95 A
+28 A 62 A 96 A
+29 A 63 A 97 A
+30 A 64 A 98 A
+31 A 65 A 99 A
+32 A 66 A 100 A
+33 A 67 A
+34 A 68 A 
