@@ -1,5 +1,6 @@
 package com.bxcode.functions.test;
 
+import com.bxcode.dto.Product;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.*;
@@ -23,11 +24,17 @@ import java.util.stream.Stream;
 
 @Log4j2
 public class AppFunctions {
+
     private static Random random = new Random();
 
     // Definir un Supplier que genera un número aleatorio entre 0 y 100
-
     static Supplier<Integer> randomSupplier = () -> random.nextInt(101);
+
+    static Supplier<Product> productSupplier = () -> Product.builder()
+            .id(1L)
+            .name("product supplier")
+            .description("product supplier")
+            .build();
 
 
     public static void main(String[] args) {
@@ -50,6 +57,8 @@ public class AppFunctions {
         // Generar una secuencia de 5 números enteros usando el Supplier
         Stream<Integer> integerStream = Stream.generate(randomSupplier).limit(10);
         integerStream.forEach(log::info);
+
+        log.info("product supplier {}", productSupplier.get());
 
     }
 }
