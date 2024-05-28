@@ -270,8 +270,8 @@ excepciones no verificadas (unchecked exceptions).
 
 #### Ejemplos de Excepciones Verificadas (Checked Exceptions):
 
-`IOException`: Esta excepción se produce cuando ocurre un error de entrada/salida, como no poder encontrar un archivo o no poder escribir en un archivo debido a permisos insuficientes.
-
+`IOException`: Esta excepción se produce cuando ocurre un error de entrada/salida, como no poder encontrar un archivo o
+no poder escribir en un archivo debido a permisos insuficientes.
 
 ```java
 import java.io.*;
@@ -290,7 +290,9 @@ public class IOExceptionExample {
     }
 }
 ```
-`SQLException`: Esta excepción se produce cuando ocurre un error relacionado con la base de datos, como una conexión perdida o una consulta SQL inválida.
+
+`SQLException`: Esta excepción se produce cuando ocurre un error relacionado con la base de datos, como una conexión
+perdida o una consulta SQL inválida.
 
 ```java
 import java.sql.*;
@@ -326,11 +328,9 @@ public class SQLExceptionExample {
 - Propósito: Se utilizan para manejar condiciones excepcionales que generalmente son causadas por errores en la lógica
   del programa, como divisiones por cero, acceso a elementos de un arreglo fuera de los límites, etc.
 
-
 #### Ejemplos de Excepciones No Verificadas (Unchecked Exceptions):
 
 `NullPointerException`: Esta excepción se produce cuando se intenta acceder a un objeto que es null.
-
 
 ```java
 public class NullPointerExceptionExample {
@@ -344,7 +344,9 @@ public class NullPointerExceptionExample {
     }
 }
 ```
-`ArithmeticException`: Esta excepción se produce cuando se intenta realizar una operación aritmética inválida, como la división por cero.
+
+`ArithmeticException`: Esta excepción se produce cuando se intenta realizar una operación aritmética inválida, como la
+división por cero.
 
 ```java
 public class ArithmeticExceptionExample {
@@ -358,7 +360,6 @@ public class ArithmeticExceptionExample {
     }
 }
 ```
-
 
 #### Comparación
 
@@ -378,10 +379,9 @@ En resumen, las excepciones verificadas se utilizan para manejar condiciones exc
 mientras que las excepciones no verificadas se utilizan para errores de programación o condiciones excepcionales no
 recuperables.
 
-
-
-
-```
+```link
+https://docs.oracle.com/javase/8/docs/api/
+https://docs.oracle.com/javase/9/docs/api/java/util/List.html
 ```
 
 
