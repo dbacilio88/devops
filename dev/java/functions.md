@@ -1,5 +1,70 @@
 # Repaso Entrevista JDK
 
+## La programación funcional:
+
+La programación funcional en Java es un paradigma de programación que se centra en tratar las operaciones como
+evaluaciones de funciones matemáticas y evita el cambio de estado y las mutaciones de datos. En la programación
+funcional, se enfatiza el uso de funciones puras, que son funciones que producen el mismo resultado para los mismos
+argumentos y no tienen efectos secundarios observables.
+
+Aunque Java es principalmente un lenguaje de programación orientado a objetos, a partir de Java 8 se introdujeron
+características que permiten la programación funcional, como expresiones lambda, interfaces funcionales predefinidas en
+el paquete java.util.function, el API de Streams y los métodos de referencia.
+
+Características Principales de la Programación Funcional en Java:
+
+- Expresiones Lambda: Las expresiones lambda permiten definir funciones anónimas de forma concisa y se utilizan
+  principalmente para pasar comportamientos como argumentos a métodos, como en el caso de las operaciones en Streams.
+- Interfaces Funcionales: Java 8 introdujo un conjunto de interfaces funcionales predefinidas en el paquete
+  java.util.function, como Function, Predicate, Consumer, Supplier, etc. Estas interfaces proporcionan un mecanismo
+  estándar para representar funciones y predicados en Java.
+- API de Streams: La API de Streams permite operar de manera declarativa y funcional en colecciones de datos, como
+  listas,
+  conjuntos y mapas. Proporciona operaciones de filtrado, mapeo, reducción, ordenamiento, y más, utilizando expresiones
+  lambda.
+- Métodos de Referencia: Los métodos de referencia proporcionan una forma de referenciar métodos existentes, incluyendo
+  constructores, de manera concisa y legible. Se pueden utilizar en lugar de expresiones lambda cuando se pasa un método
+  como argumento.
+- Inmutabilidad y Funciones Puras: Aunque Java no es inherentemente inmutable o puramente funcional, se pueden seguir
+  principios de inmutabilidad y funciones puras en el diseño y la implementación de programas en Java. Esto ayuda a
+  reducir los errores y facilita la comprensión y el mantenimiento del código.
+
+Ventajas de la Programación Funcional en Java:
+
+- Legibilidad y Concisión: Las expresiones lambda y los métodos de referencia permiten escribir código de manera más
+  concisa y legible.
+- Composición de Funciones: La composición de funciones permite construir operaciones complejas a partir de funciones
+  más simples, lo que facilita la creación de código modular y reutilizable.
+- Programación Declarativa: El uso de Streams y expresiones lambda permite expresar operaciones en términos de qué hacer
+  en lugar de cómo hacerlo, lo que resulta en un código más declarativo y fácil de entender.
+- Paralelismo y Concurrencia: El API de Streams facilita la ejecución paralela de operaciones en colecciones de datos,
+  lo que puede mejorar el rendimiento en sistemas multiproceso.
+
+### Una expresión lambda
+
+Una expresión lambda en Java es una forma de crear una función anónima de manera concisa. Es una característica
+introducida en Java 8 que permite tratar las funciones como objetos de primera clase. Esto significa que puedes pasar
+funciones como argumentos a otros métodos, devolverlas como resultados de métodos o almacenarlas en variables.
+
+Estructura de una Expresión Lambda en Java:
+Una expresión lambda consta de los siguientes elementos:
+
+- Lista de parámetros: Se pueden especificar cero o más parámetros entre paréntesis. Si no hay parámetros, se utilizan
+  paréntesis vacíos. Si hay un solo parámetro, los paréntesis pueden omitirse. Para múltiples parámetros, se separan por
+  comas.
+- Operador de flecha `(->):` Se utiliza para separar la lista de parámetros del cuerpo de la expresión lambda.
+- Cuerpo de la lambda: Puede ser una expresión o un bloque de código. Si es una expresión, el valor de retorno se
+  calcula automáticamente y se devuelve. Si es un bloque de código, se utilizan llaves `{}` y se debe incluir una
+  declaración de retorno explícita si es necesario.
+
+Uso de Expresiones Lambda:
+
+Las expresiones lambda son comúnmente utilizadas en Java para:
+
+- Pasar comportamientos como argumentos a métodos de alto orden, como los métodos forEach, filter, map en Streams.
+- Simplificar el código al eliminar la necesidad de clases anónimas.
+- Facilitar la programación funcional al permitir el uso de funciones como ciudadanos de primera clase.
+
 ## Interfaces:
 
 Es un *contrato* entre dos entidades (interfaz e implementación), esto quiere decir que una interfaz provee un servicio
@@ -1139,9 +1204,11 @@ import java.util.stream.Stream;
 
 @Log4j2
 public class AppFunctions {
+    private static Random random = new Random();
 
     // Definir un Supplier que genera un número aleatorio entre 0 y 100
-    static Supplier<Integer> randomSupplier = () -> new Random().nextInt(101);
+
+    static Supplier<Integer> randomSupplier = () -> random.nextInt(101);
 
 
     public static void main(String[] args) {
