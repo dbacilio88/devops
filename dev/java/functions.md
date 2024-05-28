@@ -1181,6 +1181,7 @@ public class AppFunctions {
 ```java
 package com.bxcode.functions.test;
 
+import com.bxcode.dto.Product;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.*;
@@ -1204,11 +1205,17 @@ import java.util.stream.Stream;
 
 @Log4j2
 public class AppFunctions {
+
     private static Random random = new Random();
 
     // Definir un Supplier que genera un número aleatorio entre 0 y 100
-
     static Supplier<Integer> randomSupplier = () -> random.nextInt(101);
+
+    static Supplier<Product> productSupplier = () -> Product.builder()
+            .id(1L)
+            .name("product supplier")
+            .description("product supplier")
+            .build();
 
 
     public static void main(String[] args) {
@@ -1232,6 +1239,8 @@ public class AppFunctions {
         Stream<Integer> integerStream = Stream.generate(randomSupplier).limit(10);
         integerStream.forEach(log::info);
 
+        log.info("product supplier {}", productSupplier.get());
+
     }
 }
 ```
@@ -1240,3 +1249,118 @@ public class AppFunctions {
 
 - Esta interfaz extiende de la interface Function y en esencia es lo mismo, con la diferencia que el argumento de tipo
   especificado será la entrada pasada por parámetro y el tipo de retorno.
+- Esta es una interfaz funcional y, por lo tanto, puede ser utilizada como el objetivo de asignación para una expresión
+  lambda o una referencia a un método
+- Representa una operación en un único operando que produce un resultado del mismo tipo que su operando. Esta es una
+  especialización de Function para el caso en que el operando y el resultado son del mismo tipo.
+
+```java
+package com.bxcode.functions.test;
+
+import lombok.extern.log4j.Log4j2;
+
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.IntUnaryOperator;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+
+
+/**
+ * AppFunctions
+ * <p>
+ * AppFunctions class.
+ * <p>
+ * THIS COMPONENT WAS BUILT ACCORDING TO THE DEVELOPMENT STANDARDS
+ * AND THE BXCODE APPLICATION DEVELOPMENT PROCEDURE AND IS PROTECTED
+ * BY THE LAWS OF INTELLECTUAL PROPERTY AND COPYRIGHT...
+ *
+ * @author Bxcode
+ * @author dbacilio88@outlook.es
+ * @since 27/05/2024
+ */
+
+@Log4j2
+public class AppFunctions {
+
+    // Definir un UnaryOperator que incrementa un número en 1
+    static UnaryOperator<Integer> incrementOperator = num -> num + 1;
+    // Definir un UnaryOperator que multiplica un número por 2
+    static UnaryOperator<Integer> multiplyByTwoOperator = num -> num * 2;
+
+    static Function<String, String> funToUpperCase = String::toUpperCase;
+    static UnaryOperator<String> unToUpperCase = String::toUpperCase;
+    static IntUnaryOperator intUnaryOperator = n -> n * n;
+
+    public static void main(String[] args) {
+
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5);
+
+        log.info("incrementOperator {}", incrementOperator.apply(5));
+
+        // Aplicar el UnaryOperator a cada elemento de la lista usando Streams
+        List<Integer> transformedNumbers = numbers.stream()
+                .map(multiplyByTwoOperator)
+                .collect(Collectors.toList());
+
+        log.info("transformedNumbers {}", transformedNumbers);
+        log.info("intUnaryOperator {}", intUnaryOperator.applyAsInt(2));
+
+        log.info("funToUpperCase {}", funToUpperCase.apply("hello"));
+        log.info("unToUpperCase {}", unToUpperCase.apply("hello"));
+    }
+}
+```
+
+#### Interface BinaryOperator<T>
+
+- `apply(T t, T u)`: Este método heredado de la interfaz BiFunction se utiliza para aplicar la operación a dos operandos
+  y devolver el resultado.
+- La interfaz `BinaryOperator<T>` es una herramienta útil en Java para representar operaciones que toman dos operandos y
+  devuelven un resultado del mismo tipo. Su uso se extiende a diversas situaciones donde se necesitan operaciones
+  binarias, como encontrar el máximo, el mínimo, la suma, etc.
+
+```java
+package com.bxcode.functions.test;
+
+import lombok.extern.log4j.Log4j2;
+
+import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
+
+
+/**
+ * AppFunctions
+ * <p>
+ * AppFunctions class.
+ * <p>
+ * THIS COMPONENT WAS BUILT ACCORDING TO THE DEVELOPMENT STANDARDS
+ * AND THE BXCODE APPLICATION DEVELOPMENT PROCEDURE AND IS PROTECTED
+ * BY THE LAWS OF INTELLECTUAL PROPERTY AND COPYRIGHT...
+ *
+ * @author Bxcode
+ * @author dbacilio88@outlook.es
+ * @since 27/05/2024
+ */
+
+@Log4j2
+public class AppFunctions {
+
+
+    static BiFunction<String, String, String> biFunction = (a, b) -> a.toUpperCase() + " - " + b.toLowerCase();
+    static BinaryOperator<String> binaryFunction = (a, b) -> a.toUpperCase() + " - " + b.toLowerCase();
+    // Definir un BinaryOperator que encuentra el máximo de dos números
+    static BinaryOperator<Integer> maxOperator = (a, b) -> a > b ? a : b;
+
+
+    public static void main(String[] args) {
+        log.info("biFunction {}", biFunction.apply("Hola", "mundo"));
+        log.info("binaryFunction {}", binaryFunction.apply("java", "jdk"));
+
+        // Usar el BinaryOperator
+        int result = maxOperator.apply(10, 5);
+        // Imprimir el resultado
+        System.out.println("El máximo de 10 y 5 es: " + result);
+    }
+}
+```

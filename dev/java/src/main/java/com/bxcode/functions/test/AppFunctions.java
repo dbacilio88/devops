@@ -1,11 +1,9 @@
 package com.bxcode.functions.test;
 
-import com.bxcode.dto.Product;
 import lombok.extern.log4j.Log4j2;
 
-import java.util.*;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
+import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 
 
 /**
@@ -25,40 +23,20 @@ import java.util.stream.Stream;
 @Log4j2
 public class AppFunctions {
 
-    private static Random random = new Random();
 
-    // Definir un Supplier que genera un número aleatorio entre 0 y 100
-    static Supplier<Integer> randomSupplier = () -> random.nextInt(101);
-
-    static Supplier<Product> productSupplier = () -> Product.builder()
-            .id(1L)
-            .name("product supplier")
-            .description("product supplier")
-            .build();
+    static BiFunction<String, String, String> biFunction = (a, b) -> a.toUpperCase() + " - " + b.toLowerCase();
+    static BinaryOperator<String> binaryFunction = (a, b) -> a.toUpperCase() + " - " + b.toLowerCase();
+    // Definir un BinaryOperator que encuentra el máximo de dos números
+    static BinaryOperator<Integer> maxOperator = (a, b) -> a > b ? a : b;
 
 
     public static void main(String[] args) {
+        log.info("biFunction {}", biFunction.apply("Hola", "mundo"));
+        log.info("binaryFunction {}", binaryFunction.apply("java", "jdk"));
 
-        Set<Integer> numbers = Set.of(1, 2, 3, 4, 5);
-        List<Integer> squares = new LinkedList<>();
-
-        numbers.forEach(n -> squares.add(n * n));
-        log.info("number squares {}", squares);
-
-        Map<Boolean, String> map = Map.of(true, "Hello", false, "World");
-
-        map.forEach((k, v) -> log.info("key {} - value {}", k, v));
-
-
-        // Obtener el número aleatorio usando el Supplier
-        int number = randomSupplier.get();
-        log.info("number random {}", number);
-
-        // Generar una secuencia de 5 números enteros usando el Supplier
-        Stream<Integer> integerStream = Stream.generate(randomSupplier).limit(10);
-        integerStream.forEach(log::info);
-
-        log.info("product supplier {}", productSupplier.get());
-
+        // Usar el BinaryOperator
+        int result = maxOperator.apply(10, 5);
+        // Imprimir el resultado
+        log.info("El máximo de 10 y 5 es: {}", result);
     }
 }
