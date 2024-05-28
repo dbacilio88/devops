@@ -956,7 +956,6 @@ import java.util.stream.Collectors;
 @Log4j2
 public class AppFunctions {
 
-
     static Predicate<Integer> isGreaterThan100 = n -> n > 100;
 
     static Predicate<Integer> isLessThan10 = n -> n < 10;
@@ -965,7 +964,9 @@ public class AppFunctions {
     static Predicate<Integer> isBetweenThan10And100 = isGreaterThan100.or(isLessThan10);
 
     public static void main(String[] args) {
+
         List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100, 200, 300));
+
         List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David", "Edward");
 
 
@@ -992,13 +993,181 @@ public class AppFunctions {
 }
 ```
 
+#### Interface BiPredicate<T>
+
+- Esta es una interfaz funcional y, por lo tanto, puede ser utilizada como el objetivo de asignación para una expresión
+  lambda o una referencia a un método.
+- Representa un predicado (una función que devuelve un valor booleano) de dos argumentos. Esta es la especialización de
+  dos aridades de Predicate.
+  Esta es una interfaz funcional cuyo método funcional es test(Object, Object).
+
+```java
+package com.bxcode.functions.test;
+
+import lombok.extern.log4j.Log4j2;
+
+import java.util.function.BiPredicate;
+
+
+/**
+ * AppFunctions
+ * <p>
+ * AppFunctions class.
+ * <p>
+ * THIS COMPONENT WAS BUILT ACCORDING TO THE DEVELOPMENT STANDARDS
+ * AND THE BXCODE APPLICATION DEVELOPMENT PROCEDURE AND IS PROTECTED
+ * BY THE LAWS OF INTELLECTUAL PROPERTY AND COPYRIGHT...
+ *
+ * @author Bxcode
+ * @author dbacilio88@outlook.es
+ * @since 27/05/2024
+ */
+
+@Log4j2
+public class AppFunctions {
+
+    static BiPredicate<String, String> biPredicate = (s1, s2) -> s1.concat(s2).equals("HelloWorld");
+    static BiPredicate<String, String> haveSameLength = (s1, s2) -> s1.length() == s2.length();
+    static BiPredicate<String, String> startWithSameLetter = (s1, s2) -> s1.charAt(0) == s2.charAt(0);
+    static BiPredicate<String, String> complexPredicate = haveSameLength.and(startWithSameLetter);
+
+    public static void main(String[] args) {
+
+        log.info("biPredicate {}", biPredicate.test("Hello", "Henry"));
+        log.info("haveSameLength {}", haveSameLength.test("Hello", "Helio"));
+        log.info("startWithSameLetter {}", startWithSameLetter.test("Hello", "Hierro"));
+        log.info("complexPredicate {}", complexPredicate.test("Hello", "Hierro"));
+    }
+}
+```
+
 #### Interface Consumer<T>
 
 - Representa una operación que acepta un único argumento y no devuelve ningún resultado.
+- Esta es una interfaz funcional y, por lo tanto, puede ser utilizada como el objetivo de asignación para una expresión
+  lambda o una referencia a un método.
+- Representa una operación que acepta un único argumento de entrada y no devuelve ningún resultado. A diferencia de la
+  mayoría de las otras interfaces funcionales, se espera que Consumer opere mediante efectos secundarios
+- La interfaz `Consumer<T>` en Java es una interfaz funcional que acepta un solo argumento y no devuelve ningún
+  resultado.
+  Es una parte fundamental del paquete java.util.function y se utiliza principalmente para representar operaciones que
+  se realizan sobre un solo argumento, como consumir un valor o realizar una acción con ese valor.
+- Concisión y Claridad: Las expresiones lambda permiten escribir operaciones de consumo de manera más concisa y legible.
+- Composición de Operaciones: El método andThen permite componer operaciones secuenciales de manera simple y clara.
+- Compatibilidad con API Funcionales: `Consumer<T>` se puede usar en varios contextos, especialmente en operaciones de
+  Streams para realizar acciones sobre cada elemento de una colección de datos.
+
+```java
+package com.bxcode.functions.test;
+
+import lombok.extern.log4j.Log4j2;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Consumer;
+
+
+/**
+ * AppFunctions
+ * <p>
+ * AppFunctions class.
+ * <p>
+ * THIS COMPONENT WAS BUILT ACCORDING TO THE DEVELOPMENT STANDARDS
+ * AND THE BXCODE APPLICATION DEVELOPMENT PROCEDURE AND IS PROTECTED
+ * BY THE LAWS OF INTELLECTUAL PROPERTY AND COPYRIGHT...
+ *
+ * @author Bxcode
+ * @author dbacilio88@outlook.es
+ * @since 27/05/2024
+ */
+
+@Log4j2
+public class AppFunctions {
+
+    // Consumer que imprime un valor
+    static Consumer<String> printConsumer = log::info;
+    // Consumer que imprime la longitud del valor
+    static Consumer<String> lengthConsumer = s -> log.info("Longitud: {}", s.length());
+    // Combinar Consumers usando 'andThen'
+    static Consumer<String> combinedConsumer = printConsumer.andThen(lengthConsumer);
+    static Consumer<Integer> printNumber = n -> log.info("Número: {}", n);
+
+
+    public static void main(String[] args) {
+
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        printConsumer.accept("Hello world");
+        lengthConsumer.accept("Java");
+        combinedConsumer.accept("Hello, world");
+        numbers.forEach(printNumber);
+    }
+}
+```
 
 #### Interface Supplier<T>
 
 - Representa una operación que provee un objeto y no requiere parámetros
+- La interfaz `Supplier<T>` en Java es una interfaz funcional que no acepta argumentos y produce un resultado de tipo T.
+  Es parte del paquete java.util.function y se utiliza para representar proveedores de valores, es decir, funciones que
+  no reciben ningún argumento y devuelven un resultado.
+- `get():` Este es el único método abstracto que debe implementarse. No acepta ningún argumento y devuelve un resultado
+  de tipo T.
+
+```java
+package com.bxcode.functions.test;
+
+import lombok.extern.log4j.Log4j2;
+
+import java.util.*;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+
+
+/**
+ * AppFunctions
+ * <p>
+ * AppFunctions class.
+ * <p>
+ * THIS COMPONENT WAS BUILT ACCORDING TO THE DEVELOPMENT STANDARDS
+ * AND THE BXCODE APPLICATION DEVELOPMENT PROCEDURE AND IS PROTECTED
+ * BY THE LAWS OF INTELLECTUAL PROPERTY AND COPYRIGHT...
+ *
+ * @author Bxcode
+ * @author dbacilio88@outlook.es
+ * @since 27/05/2024
+ */
+
+@Log4j2
+public class AppFunctions {
+
+    // Definir un Supplier que genera un número aleatorio entre 0 y 100
+    static Supplier<Integer> randomSupplier = () -> new Random().nextInt(101);
+
+
+    public static void main(String[] args) {
+
+        Set<Integer> numbers = Set.of(1, 2, 3, 4, 5);
+        List<Integer> squares = new LinkedList<>();
+
+        numbers.forEach(n -> squares.add(n * n));
+        log.info("number squares {}", squares);
+
+        Map<Boolean, String> map = Map.of(true, "Hello", false, "World");
+
+        map.forEach((k, v) -> log.info("key {} - value {}", k, v));
+
+
+        // Obtener el número aleatorio usando el Supplier
+        int number = randomSupplier.get();
+        log.info("number random {}", number);
+
+        // Generar una secuencia de 5 números enteros usando el Supplier
+        Stream<Integer> integerStream = Stream.generate(randomSupplier).limit(10);
+        integerStream.forEach(log::info);
+
+    }
+}
+```
 
 #### Interface UnaryOperator<T>
 

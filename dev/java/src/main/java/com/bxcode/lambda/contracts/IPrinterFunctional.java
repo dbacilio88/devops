@@ -16,8 +16,6 @@ package com.bxcode.lambda.contracts;
 
 @FunctionalInterface
 public interface IPrinterFunctional<T> {
+
     void print(T t);
-
 }
-
-

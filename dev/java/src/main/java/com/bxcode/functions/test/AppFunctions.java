@@ -2,11 +2,9 @@ package com.bxcode.functions.test;
 
 import lombok.extern.log4j.Log4j2;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.*;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 
 /**
@@ -25,38 +23,33 @@ import java.util.stream.Collectors;
 
 @Log4j2
 public class AppFunctions {
+    private static Random random = new Random();
 
+    // Definir un Supplier que genera un número aleatorio entre 0 y 100
 
-    static Predicate<Integer> isGreaterThan100 = n -> n > 100;
+    static Supplier<Integer> randomSupplier = () -> random.nextInt(101);
 
-    static Predicate<Integer> isLessThan10 = n -> n < 10;
-    static Predicate<String> hasLengthGreaterThanThree = n -> n.length() > 3;
-
-    static Predicate<Integer> isBetweenThan10And100 = isGreaterThan100.or(isLessThan10);
 
     public static void main(String[] args) {
-        List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100, 200, 300));
-        List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David", "Edward");
+
+        Set<Integer> numbers = Set.of(1, 2, 3, 4, 5);
+        List<Integer> squares = new LinkedList<>();
+
+        numbers.forEach(n -> squares.add(n * n));
+        log.info("number squares {}", squares);
+
+        Map<Boolean, String> map = Map.of(true, "Hello", false, "World");
+
+        map.forEach((k, v) -> log.info("key {} - value {}", k, v));
 
 
-        List<Integer> filter = numbers.stream()
-                .filter(isLessThan10)
-                .collect(Collectors.toList());
+        // Obtener el número aleatorio usando el Supplier
+        int number = randomSupplier.get();
+        log.info("number random {}", number);
 
-        List<Integer> negate = numbers.stream()
-                .filter(isBetweenThan10And100.negate())
-                .collect(Collectors.toList());
+        // Generar una secuencia de 5 números enteros usando el Supplier
+        Stream<Integer> integerStream = Stream.generate(randomSupplier).limit(10);
+        integerStream.forEach(log::info);
 
-        List<String> filterName = names.stream()
-                .filter(hasLengthGreaterThanThree)
-                .collect(Collectors.toList());
-
-        numbers.removeIf(isGreaterThan100);
-
-        //result numbers:
-        log.info("list numbers filter {}", filter);
-        log.info("list numbers negate {}", negate);
-        log.info("list numbers removeIf {}", numbers);
-        log.info("list filterName > 3 {}", filterName);
     }
 }
