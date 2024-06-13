@@ -1,4 +1,0 @@
-export enum ProcessResult {
-    PROCESS_SUCCESS = 'PROCESS_SUCCESS',
-    PROCESS_ERROR = 'PROCESS_ERROR',
-}

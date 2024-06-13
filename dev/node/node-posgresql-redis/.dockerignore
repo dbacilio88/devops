@@ -1,8 +1,0 @@
-Dockerfile
-docker-compose.dev.yml
-.git
-/node_modules
-package-lock.json
-.gitignore
-.dockerignore
-dist

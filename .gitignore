@@ -12,9 +12,6 @@
 .idea/**/dictionaries
 .idea/**/shelf
 
-aws/iam/*
-user/*
-
 # AWS User-specific
 .idea/**/aws.xml
 
@@ -233,5 +230,6 @@ modules.xml
 *.ipr
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all,intellij+iml,intellij
-/aws/iam/user/
-/aws/iam/
+/temp/
+/docker/release/database/data
+# colocar los archivos que despues se van a ir incluyendo

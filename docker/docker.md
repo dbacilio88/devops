@@ -17,7 +17,7 @@ docker container exec container-id bash -C "sleep 10"
 ## cmd docker volume
 ```shell
 docker create --name 'name-container' --mount type-bind=bind,source="$(pwd)/app" 'name-image:version'
-docker create --name 'name-container' --mount source='name-volume',target='/app' 'name-image:version'
+docker create --name 'name-container' --mount source='name-data',target='/app' 'name-image:version'
 ```
 
 ```shell
@@ -49,7 +49,7 @@ autorestar=true
 ```
 
 ## Ciclo de vida de un contenedor
-![img.png](img/e457f88c-f649-4cf9-ab34-314b429a3229.png)
+![img.png](../temp/docker/img/e457f88c-f649-4cf9-ab34-314b429a3229.png)
 
 ## Restar policy | políticas de reinicio
 ```shell

@@ -1,0 +1,107 @@
+services:
+
+  microservice-postgres:
+    build:
+      context: ${POSTGRES_CONTEXT}
+      dockerfile: Dockerfile
+    container_name: microservice-database
+    image: ${POSTGRES_IMAGE}
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    restart: always
+    volumes:
+      - ${POSTGRES_VOLUME}:/var/lib/postgresql/data
+    networks:
+      - services-database
+      - cinfe
+
+  nexus-repository:
+    image: "sonatype/nexus3"
+    container_name: nexus-repository
+    user: ${NEXUS_USER}
+    restart: always
+    ports:
+      - ${NEXUS_PORT}:${NEXUS_PORT}
+      - ${NEXUS_PORTS}:${NEXUS_PORTS}
+    volumes:
+      - ${NEXUS_VOLUME}:/nexus-data
+    networks:
+      - services-devops
+      - cinfe
+
+  jenkins:
+    build:
+      context: ${JENKINS_CONTEXT}
+      dockerfile: Dockerfile
+    container_name: jenkins
+    privileged: true
+    user: ${JENKINS_USER}
+    restart: always
+    ports:
+      - ${JENKINS_PORT}:${JENKINS_PORT}
+      - ${JENKINS_PORTS}:${JENKINS_PORTS}
+    volumes:
+      - ${JENKINS_VOLUME}:/var/jenkins_home
+      - ${JENKINS_VOLUME_RUN}:/var/run/docker.sock
+      - ${JENKINS_VOLUME_BIN}:/var/run/docker.sock
+    networks:
+      - services-devops
+      - cinfe
+
+  jenkins-agent:
+    build:
+      context: ${JENKINS_AGENT_CONTEXT}
+      dockerfile: Dockerfile
+    container_name: jenkins-agent
+    hostname: jenkins-agent
+    privileged: true
+    user: ${JENKINS_USER}
+    restart: always
+    ports:
+      - ${JENKINS_AGENT_PORT}:${JENKINS_AGENT_PORTS}
+    volumes:
+      - ${JENKINS_AGENT_VOLUME}:/home/jenkins/agent
+      - ${JENKINS_VOLUME_RUN}:/var/run/docker.sock
+      - ${JENKINS_VOLUME_BIN}:/var/run/docker.sock
+    env_file:
+      - pg/jenkins/agent/.env.jenkins
+    networks:
+      - services-devops
+      - cinfe
+
+  #gitlab:
+  #  image: gitlab/gitlab-ce:latest
+  #  container_name: gitlab
+  #  restart: always
+  #  hostname: localhost
+  #  environment:
+  #    GITLAB_OMNIBUS_CONFIG: |
+  #      external_url 'http://10.64.170.11:8929'
+  #      gitlab_rails['gitlab_shell_ssh_port'] = 2424
+  #  ports:
+  #    - ${GITLAB_PORT}:${GITLAB_PORT}
+  #    - ${GITLAB_PORT_SSL}:${GITLAB_PORT_SSL}
+  #    - ${GITLAB_PORTS_IN}:${GITLAB_PORTS}
+  #  volumes:
+  #    - ${GITLAB_HOME_CONFIG}:/etc/gitlab
+  #    - ${GITLAB_HOME_LOGS}:/var/log/gitlab
+  #    - ${GITLAB_HOME_DATA}:/var/opt/gitlab
+  #  shm_size: '256m'
+  #  networks:
+  #    - services-devops
+  #    - cinfe
+
+networks:
+  services-database:
+    driver: bridge
+    name: services-database
+  services-devops:
+    driver: bridge
+    name: services-devops
+  cinfe:
+    driver: bridge
+    name: cinfe

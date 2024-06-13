@@ -1,0 +1,82 @@
+services:
+
+  microservice-eureka:
+    image: localhost:8082/api-core-ejercito-statistics-eureka-microservice
+    container_name: api-core-ejercito-statistics-eureka-microservice
+    ports:
+      - "8761:8761"
+    environment:
+      SPRING_PROFILES_ACTIVE: local
+    restart: always
+    networks:
+      - microservices
+      - cinfe
+
+  microservice-security:
+    image: localhost:8082/api-core-ejercito-statistics-security-microservice
+    container_name: api-core-ejercito-statistics-security-microservice
+    ports:
+      - "8003:8003"
+    environment:
+      SPRING_PROFILES_ACTIVE: release
+    restart: always
+    networks:
+      - microservices
+      - cinfe
+
+  microservice-dependencies:
+    image: localhost:8082/api-core-ejercito-statistics-dependencies-microservice
+    container_name: api-core-ejercito-statistics-dependencies-microservice
+    ports:
+      - "8004:8004"
+    environment:
+      SPRING_PROFILES_ACTIVE: release
+    restart: always
+    networks:
+      - microservices
+      - cinfe
+
+  microservice-statistics:
+    image: localhost:8082/api-core-ejercito-statistics-microservice
+    container_name: api-core-ejercito-statistics-microservice
+    ports:
+      - "8005:8005"
+    environment:
+      SPRING_PROFILES_ACTIVE: release
+    restart: always
+    networks:
+      - microservices
+      - cinfe
+
+  microservice-reports:
+    image: localhost:8082/api-core-ejercito-statistics-reports-microservice
+    container_name: api-core-ejercito-statistics-reports-microservice
+    ports:
+      - "8006:8006"
+    environment:
+      SPRING_PROFILES_ACTIVE: release
+    restart: always
+    networks:
+      - microservices
+      - cinfe
+
+  microservice-gateway:
+    image: localhost:8082/api-core-ejercito-statistics-gateway-microservice
+    container_name: api-core-ejercito-statistics-gateway-microservice
+    ports:
+      - "8002:8002"
+    environment:
+      SPRING_PROFILES_ACTIVE: release
+    restart: always
+    networks:
+      - microservices
+      - cinfe
+
+networks:
+  microservices:
+    driver: bridge
+    name: microservices
+
+  cinfe:
+    external: true
+    name: cinfe
