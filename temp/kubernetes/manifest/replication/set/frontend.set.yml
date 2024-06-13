@@ -22,5 +22,5 @@ spec:
           image: us-docker.pkg.dev/google-samples/containers/gke/gb-frontend:v5
           resources:
             limits:
-              cpu: 1
+              cpu: "1"
               memory: 10Mi

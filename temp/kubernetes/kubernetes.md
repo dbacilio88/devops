@@ -360,11 +360,8 @@ metadata:
   annotations:
     kubectl.kubernetes.io/last-applied-configuration: |
       {"apiVersion":"v1","data":{"DB_PASSWORD":"cG9zdGdyZXM=","DB_USER":"cG9zdGdyZXM="},"kind":"Secret","metadata":{"annotations":{},"name":"postgres-secrets","namespace":"default"},"type":"Opaque"}
-  creationTimestamp: "2023-12-12T12:41:17Z"
   name: postgres-secrets
   namespace: default
-  resourceVersion: "6698"
-  uid: 7950fc20-fb8f-4f6d-9bae-d52897d82f72
 type: Opaque
 ```
 
@@ -425,8 +422,8 @@ kind: ConfigMap
 metadata:
   name: postgres-config
 data:
-  DB_NAME: database
-  DB_HOST: database-service
+  DB_NAME: 'database'
+  DB_HOST: 'database-service'
   DB_PORT: "5432"
 ```
 
