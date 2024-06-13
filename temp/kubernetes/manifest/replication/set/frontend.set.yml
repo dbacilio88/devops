@@ -16,6 +16,11 @@ spec:
       labels:
         tier: frontend
     spec:
+      automountServiceAccountToken: false
       containers:
         - name: php-redis
           image: us-docker.pkg.dev/google-samples/containers/gke/gb-frontend:v5
+          resources:
+            limits:
+              cpu: 1
+              memory: 10Mi

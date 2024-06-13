@@ -12,8 +12,13 @@ spec:
       labels:
         app: nginx
     spec:
+      automountServiceAccountToken: false
       containers:
         - name: nginx
           image: nginx
+          resources:
+            limits:
+              memory: 10Mi
+              cpu: 1
           ports:
             - containerPort: 80
