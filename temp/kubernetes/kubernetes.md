@@ -10,7 +10,7 @@ minikube start --kubernetes-version='version'
 cat config
 ```
 
-```yml
+```
 apiVersion: v1
 clusters:
   - cluster:
