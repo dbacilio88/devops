@@ -3,7 +3,6 @@ services:
     build:
       context: ./pg
       dockerfile: Dockerfile
-      #labels: dev
       target: dev
     container_name: pg-dcd014f7
     env_file:
