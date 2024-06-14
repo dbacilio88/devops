@@ -230,6 +230,6 @@ modules.xml
 *.ipr
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all,intellij+iml,intellij
-/aws/security/.env
+/aws/keys
 /docker/release/database/data
 # colocar los archivos que despues se van a ir incluyendo
