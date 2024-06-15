@@ -10,7 +10,8 @@ resource "aws_instance" "public_instance" {
     "Name" = "public_instance"
   }
 
-  #lifecycle {
+  #
+  # lifecycle {
   #create_before_destroy = true
   #prevent_destroy = true
   #}
@@ -19,12 +20,12 @@ resource "aws_instance" "public_instance" {
   vpc_security_group_ids = [aws_security_group.sg_public_instance.id]
 
   provisioner "local-exec" {
-    command = "echo instance create con Ip ${aws_instance.public_instance.public_ip} >> dattos_instance.txt"
+    command = "echo instance create con Ip ${aws_instance.public_instance.public_ip} >> datas_instance.txt"
   }
 
   provisioner "local-exec" {
     when    = destroy
-    command = "echo instance destroy con Ip ${self.public_ip} >> dattos_instance.txt"
+    command = "echo instance destroy con Ip ${self.public_ip} >> data_instance.txt"
   }
   /*
     provisioner "remote-exec" {

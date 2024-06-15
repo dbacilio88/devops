@@ -149,6 +149,8 @@ terraform graph |
 
 ## Diagramas de Infraestructura
 
+![(vpc.png](vpc.png)
+
 ## Terraform State (tfstate)
 
 ![img_2.png](img_2.png)
