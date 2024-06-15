@@ -87,16 +87,40 @@ terraform plan
 terraform destroy
 ```
 
-### Formater archivos
+### Formater archivos de configuración
 
 ```bash
 terraform fmt
 ```
 
-### Validar archivos
+### Validar archivos sintaxis correcta
 
 ```bash
 terraform validate
+```
+
+### Listar los providers
+
+```bash
+terraform providers
+```
+
+### Listar los outputs
+
+```bash
+terraform output
+```
+
+### Refrescar los cambios
+
+```bash
+terraform refresh
+```
+
+### Lista de las dependence e interrelacionan
+
+```bash
+terraform graph | 
 ```
 
 ## Restringir las versiones de Terraform y Providers
@@ -130,3 +154,8 @@ terraform validate
 ![img_2.png](img_2.png)
 
 - archivo texto plano
+- **`terraform state list`**
+- **`terraform state show name-recurso`**
+- **`terraform state rm`**
+
+## Terraform 
