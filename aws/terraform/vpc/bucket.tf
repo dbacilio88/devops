@@ -3,7 +3,7 @@
 
 # Resources aws_s3_bucket
 resource "aws_s3_bucket" "proveedores" {
-  count = 10
+  count  = 10
   bucket = "proveedores-${random_string.random[count.index].id}"
   //Siempre es recomendable con etiquetas
   tags = {

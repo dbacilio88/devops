@@ -16,7 +16,7 @@ variable "private_subnet" {
 
 variable "subnets" {
   description = "list subnets"
-  type = list(string)
+  type        = list(string)
 }
 
 variable "tags" {
@@ -37,5 +37,5 @@ variable "ingress_cidr" {
 
 variable "ec2_specs" {
   description = "Values to instance ec2"
-  type = map(string)
+  type        = map(string)
 }
