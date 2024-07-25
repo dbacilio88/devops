@@ -42,7 +42,7 @@ terraform destroy
 
 ## Que es HCL
 
-![img.png](img.png)
+![img.png](images/7446ff1c-96f0-46d5-a0c6-b29a1efc3a67.png)
 
 ```link
 https://registry.terraform.io/
@@ -127,7 +127,7 @@ terraform graph |
 
 ## Variables
 
-![img_1.png](img_1.png)
+![img_1.png](images/4f4678ac-2fa3-408f-8238-a134b5b34573.png)
 
 ### Tipos de Variables en terraform
 
@@ -149,11 +149,11 @@ terraform graph |
 
 ## Diagramas de Infraestructura
 
-![(vpc.png](vpc.png)
+![(vpc.png](images/2ae050cf-2abd-450a-b8eb-759d5cf77fb8.png)
 
 ## Terraform State (tfstate)
 
-![img_2.png](img_2.png)
+![img_2.png](images/9749a373-127e-4455-88b2-526d24ff0db6.png)
 
 - archivo texto plano
 - **`terraform state list`**

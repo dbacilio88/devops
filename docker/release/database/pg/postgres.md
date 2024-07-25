@@ -12,10 +12,10 @@ PostgreSQL es un popular sistema de gestión de bases de datos relacionales que 
 services:
   pg-dcd014f7:
     build:
-      context: ./pg
+      context: ./mysql
       dockerfile: Dockerfile
       target: dev
-    container_name: pg-dcd014f7
+    container_name: mysql-dcd014f7
     env_file:
       - .env.prod
     ports:
