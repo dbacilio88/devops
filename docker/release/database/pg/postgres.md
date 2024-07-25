@@ -1,9 +1,10 @@
-## Docker: Cómo instalar PostgreSQL usando Docker Compose
+## Docker: Cómo instalar Postgresql usando Docker Compose
 
-PostgreSQL es un popular sistema de gestión de bases de datos relacionales que se utiliza ampliamente en la comunidad de desarrollo.
+Postgresql es un popular sistema de gestión de bases de datos relacionales que se utiliza ampliamente en la comunidad de
+desarrollo.
 
 <p align="center">
-    <img src="../pg/resources/943c94e8-2e22-4367-896a-b580d9640fa4.png" width="300">
+    <img src="../pg/resources/943c94e8-2e22-4367-896a-b580d9640fa4.png" width="512" alt="center" height="512">
 </p>
 
 ### Ejecutar docker compose
@@ -32,7 +33,7 @@ networks:
     driver: bridge
 ```
 
-Iniciar la creacion del contenedor y la red:
+Iniciar la creación del contenedor y la red:
 
 `- d : en modo independiente`
 
@@ -40,7 +41,7 @@ Iniciar la creacion del contenedor y la red:
 docker compose up -d
 ```
 
-Eliminar la creacion del contenedor y la red:
+Eliminar la creación del contenedor y la red:
 
 ```bash
 docker compose down
