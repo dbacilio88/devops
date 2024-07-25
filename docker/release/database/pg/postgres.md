@@ -3,10 +3,6 @@
 Postgresql es un popular sistema de gestión de bases de datos relacionales que se utiliza ampliamente en la comunidad de
 desarrollo.
 
-<p align="center">
-    <img src="../pg/resources/943c94e8-2e22-4367-896a-b580d9640fa4.png" width="512" alt="center" height="512">
-</p>
-
 ### Ejecutar docker compose
 
 ```yml
