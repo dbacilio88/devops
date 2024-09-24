@@ -1,0 +1,60 @@
+services:
+  redis-dev:
+    build:
+      context: images
+      dockerfile: images/Dockerfile
+    container_name: redis-dev
+    ports:
+      - 6379:6379
+    restart: always
+    volumes:
+      - ./volumes/dev:/data
+      - ./images/redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - bacsystem
+  redis-test:
+    build:
+      context: images
+      dockerfile: images/Dockerfile
+    container_name: redis-test
+    ports:
+      - 6380:6379
+    restart: always
+    volumes:
+      - ./volumes/test:/data
+      - ./images/redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - bacsystem
+
+  redis-uat:
+    build:
+      context: images
+      dockerfile: images/Dockerfile
+    container_name: redis-uat
+    ports:
+      - 6381:6379
+    restart: always
+    volumes:
+      - ./volumes/test:/data
+      - ./images/redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - bacsystem
+
+  redis-prod:
+    build:
+      context: images
+      dockerfile: images/Dockerfile
+    container_name: redis-prod
+    ports:
+      - 6382:6379
+    restart: always
+    volumes:
+      - ./volumes/prod:/data
+      - ./images/redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - bacsystem
+
+networks:
+  bacsystem:
+    name: bacsystem
+    driver: bridge

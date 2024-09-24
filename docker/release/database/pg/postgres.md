@@ -14,7 +14,7 @@ services:
       target: dev
     container_name: mysql-dcd014f7
     env_file:
-      - .env.prod
+      - .env
     ports:
       - 5432:5432
     restart: always

@@ -1,6 +1,6 @@
 variable "tags" {
   description = "tags project"
-  type = map(string)
+  type        = map(string)
 }
 
 variable "cidr_block" {
@@ -42,4 +42,14 @@ variable "ec2_ami" {
 variable "ec2_type" {
   default = "t2.micro"
   type    = string
+}
+
+variable "cluster_name" {
+  description = "cluster name eks"
+  type        = string
+}
+
+variable "region_aws" {
+  description = "region aws"
+  type        = string
 }
