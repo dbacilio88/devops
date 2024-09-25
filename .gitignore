@@ -272,8 +272,6 @@ terraform.rc
 .terraform.lock.hcl
 # End of https://www.toptal.com/developers/gitignore/api/terraform
 
-/aws/terraform/secret
-/docker/release/database/data
 # colocar los archivos que despues se van a ir incluyendo
 # volumes
 **/volumes/*
@@ -281,3 +279,5 @@ terraform.rc
 **/.env.uat
 **/.env.test
 **/.env
+
+configuration/*
