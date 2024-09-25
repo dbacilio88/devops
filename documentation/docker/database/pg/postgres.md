@@ -3,23 +3,32 @@
 Postgresql es un popular sistema de gestión de bases de datos relacionales que se utiliza ampliamente en la comunidad de
 desarrollo.
 
+## Crear archivo .env: 
+Crear el archivo .env en dentro del directorio database `/database/.env`
+
+```dotenv
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=postgres
+```
+
 ### Ejecutar docker compose
 
-```yml
+```yaml
 services:
-  pg-dcd014f7:
+  pg-db:
     build:
-      context: ./mysql
+      context: pg
       dockerfile: Dockerfile
       target: dev
-    container_name: mysql-dcd014f7
+    container_name: pg-bd-app
     env_file:
       - .env
     ports:
-      - 5432:5432
+      - "5432:5432"
     restart: always
     volumes:
-      - ./data/dcd014f7:/var/lib/postgresql/data
+      - ./volumes/16.3.20:/var/lib/postgresql/data
     networks:
       - bacsystem
 

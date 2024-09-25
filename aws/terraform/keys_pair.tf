@@ -1,7 +1,0 @@
-resource "aws_key_pair" "kp_bacsystem_key" {
-  key_name   = "instance_aws"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQChDYL2M0jIHC1IZWgUeCeNepEPsGQuLG27Oh0uvnKz4hSyc2bgYPRLLDgD+bJ6uVoeXWbqKPYfsQeSRDA7UjVKFnhMizU2NXW3jRfn20nj+Ts21wjCgEG8jqxWqBXFjJX04IhjI42cSuYtZE1N1I0FzHVPSpZuMb5WJpJ6u259IdbCuRtawK0ED3f3OCmPxP4NvmLX44yDWGuv3fkfFglO3ZFxPDzOJgImZEThEwgjFys67gUPGzJGU4gkBGbVTKYkhRPb5ayqf1b9dp8kHXN87++aDi0pKHQi6uI765dKw6hDutc6yaWF5gBlqF1jT9xQccdgh4xsW2ZKQWjQW724gy1OZXq5ibNuPpiqJyfx/8IIS+o0rScBbsEzCX1BrB9bE5Pgndl6Z2jkjtlVkXPat57blzmGlXiqBXk3DiR1B2onLfynJPMcU/JbnzPm5NR7pTy/YbANz3lOhUM9BR8ZJZuBkH6KYCkydW9ralaSDzMO74bEzb674Ui9m3/AqP9jKMDfvMEtElDrIG5I7T3dk0A3T24xdvsUcRqpBeXe2gMcLek/zMoI31tC2B670/LrAQlS/dUKqX2pGcK8oB9ukl5dQavTaSniYdsY+fnZzPY/8HzWVPX7ZoWIQPnWVTi/W7f84J537t45euJu+vBQbw/jk7KVCSCTYdTrIYXUxw== bxcode@cbaciliod"
-  tags = {
-    Name = "kp_bacsystem_key"
-  }
-}
