@@ -11,7 +11,22 @@ services:
       - "5432:5432"
     restart: always
     volumes:
-      - ./volumes/16.3.20:/var/lib/postgresql/data
+      - ./volumes/pg/16.3.20:/var/lib/postgresql/data
+    networks:
+      - bacsystem
+  mysql-db:
+    build:
+      context: mysql
+      dockerfile: Dockerfile
+      target: dev
+    container_name: mysql-bd-app
+    env_file:
+      - .env
+    ports:
+      - "3306:3306"
+    restart: always
+    volumes:
+      - ./volumes/mysql/8.0.39:/var/lib/mysql
     networks:
       - bacsystem
 
