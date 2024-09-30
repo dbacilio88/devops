@@ -3,7 +3,8 @@
 Postgresql es un popular sistema de gestión de bases de datos relacionales que se utiliza ampliamente en la comunidad de
 desarrollo.
 
-## Crear archivo .env: 
+## Crear archivo .env:
+
 Crear el archivo .env en dentro del directorio database `/database/.env`
 
 ```dotenv
@@ -52,5 +53,158 @@ Eliminar la creación del contenedor y la red:
 docker compose down
 ```
 
+# Crear database y esquema
 
+Paso 1: Conectar a PostgreSQL
+
+Abre tu terminal y conéctate a PostgreSQL como superusuario (postgres):
+
+```bash
+psql -U postgres
+```
+
+Paso 2: Crear la Base de Datos
+
+Crea una nueva base de datos. Puedes llamarla, por ejemplo, mi_workspace:
+
+```bash
+create database bs000000;
+```
+
+Paso 3: Conectarte a la Nueva Base de Datos
+
+Ahora, conéctate a la base de datos que acabas de crear:
+
+```bash
+\c bs000000
+```
+
+Paso 4: Crear el Esquema
+
+Crea un esquema dentro de la base de datos. Vamos a llamarlo data:
+
+```bash
+create schema bxcode;
+```
+
+Paso 5: Crear Nuevos Usuarios
+
+Ahora, crea los usuarios que necesitarás. Aquí tienes ejemplos para crear dos usuarios: user1 y user2.
+Reemplaza user1 y user2 con contraseñas seguras.
+
+```bash
+create user user1 with password 'user1';
+create user user2 with password 'user2';
+```
+
+Paso 6: Asignar Permisos al Esquema
+
+Ahora, asigna permisos a los usuarios sobre el esquema data. Esto les permitirá usar el esquema:
+
+```bash
+grant usage on schema bxcode to user1;
+
+```
+
+Paso 7: Crear Tablas en el Esquema
+
+Ahora, crea una tabla dentro del esquema data. Por ejemplo, una tabla llamada `data`:
+
+```bash
+create table bxcode.data(id serial primary key);
+```
+
+Paso 8: Asignar Permisos a las Tablas
+
+Otorga permisos a los usuarios para que puedan realizar operaciones en la tabla `data`:
+
+```bash
+grant select, insert, update, delete on table bxcode.data TO user1;
+```
+
+Paso 9: Proteger las Nuevas Tablas
+
+Si planeas crear más tablas en el futuro, asegúrate de que los usuarios tengan permisos por defecto sobre nuevas tablas
+en el esquema:
+
+```bash
+ALTER DEFAULT PRIVILEGES IN SCHEMA bxcode
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO user1;
+```
+
+Paso 10: Probar la Conexión
+
+Prueba conectarte como uno de los nuevos usuarios para verificar que todo funcione correctamente. Usa el siguiente
+comando en la terminal:
+
+```bash
+psql -U user1 -d bxcode
+```
+
+# Crear usuarios owner pára cada base de datos;
+
+Paso 1: Conectarte a PostgreSQL
+
+Abre tu terminal y conéctate a PostgreSQL como superusuario (postgres):
+
+```bash
+psql -U postgres
+```
+Paso 2: Crear Usuarios
+
+Primero, crea los usuarios. Aquí vamos a crear user1 y user2. Asegúrate de usar contraseñas seguras:
+
+```bash
+create user user1 with password 'user1';
+create user user2 with password 'user2';
+```
+
+Paso 3: Crear Bases de Datos
+
+Crea una base de datos para cada usuario. Vamos a llamar a las bases de datos db_user1 y db_user2:
+
+```bash
+create database db_user1 owner user1;
+create database db_user2 owner user2;
+```
+
+Paso 4: Conectar a Cada Base de Datos y Crear Esquemas
+
+Ahora, conecta a cada base de datos y crea un esquema para cada usuario.
+
+Para user1:
+Conéctate a la base de datos db_user1:
+
+```bash
+\c db_user1
+```
+Crea un esquema llamado data:
+
+```bash
+create schema data;
+```
+
+Paso 5: Asignar Permisos
+
+Ahora asigna permisos a cada usuario sobre su esquema.
+
+Para user1:
+Conéctate a db_user1 (si no estás ya en esa base de datos):
+
+```bash
+grant usage on schema data to user1;
+grant create on schema data to user1;
+grant select, insert, update, delete on all tables in schema data to user1;
+```
+
+Paso 6: Verificar Permisos
+
+Para verificar que los permisos se han otorgado correctamente, puedes usar el siguiente comando para ver los permisos del esquema:
+
+```bash
+SELECT nspname, pg_catalog.pg_get_userbyid(nspowner) AS owner
+FROM pg_catalog.pg_namespace
+WHERE nspname = 'd000000';
+
+```
 
