@@ -164,6 +164,21 @@ services:
     volumes:
       - ./volumes/rabbitmq:/var/lib/rabbitmq
 
+  jenkins:
+    build:
+      context: ../application/jenkins/images
+      dockerfile: Dockerfile
+    container_name: jenkins
+    hostname: jenkins
+    restart: always
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - ./volumes/jenkins:/var/jenkins_home  # Persistencia de datos
+    networks:
+      - bacsystem
+
 networks:
   bacsystem:
     name: bacsystem-net-db
