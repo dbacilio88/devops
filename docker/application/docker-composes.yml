@@ -1,0 +1,242 @@
+services:
+
+  zookeeper:
+    build:
+      context: zookeeper
+      dockerfile: zookeeper/Dockerfile
+      target: dev
+    container_name: zookeeper
+    hostname: zookeeper
+    restart: always
+    healthcheck:
+      test: echo srvr | nc zookeeper 2181 || exit 1
+      start_period: 10s
+      retries: 20
+      interval: 10s
+    ports:
+      - "2181:2181"
+    volumes:
+      - ./volumes/zookeeper/latest:/bitnami/zookeeper
+    env_file:
+      - zookeeper.env
+    networks:
+      - bacsystem
+
+  kafka:
+    build:
+      context: kafka
+      dockerfile: kafka/Dockerfile
+      target: dev
+    container_name: kafka-app
+    hostname: kafka
+    restart: always
+    depends_on:
+      - zookeeper
+    healthcheck:
+      test: nc -z localhost 9092 || exit -1
+      start_period: 15s
+      interval: 5s
+      timeout: 10s
+      retries: 10
+    ports:
+      - "9092:9092"
+      - "29092:29092"
+    env_file:
+      - kafka.env
+    volumes:
+      - ./volumes/kafka/latest:/bitnami/kafka
+    networks:
+      - bacsystem
+
+  postgres:
+    build:
+      context: pg
+      dockerfile: pg/Dockerfile
+      target: dev
+    container_name: postgres-app
+    hostname: postgres
+    command: [ "postgres", "-c", "wal_level=logical", "-c", "max_wal_senders=1" , "-c", "max_replication_slots=1" ]
+    healthcheck:
+      test: [ 'CMD','psql','-U','postgres','-c','SELECT 1' ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    env_file:
+      - postgres.env
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - ./volumes/postgres/16.3.20:/data
+      - ./volumes/postgres/16.3.20/data:/var/lib/postgresql/data
+    networks:
+      - bacsystem
+
+  mysql:
+    build:
+      context: mysql
+      dockerfile: mysql/Dockerfile
+      target: dev
+    container_name: mysql-app
+    hostname: mysql
+    env_file:
+      - mysql.env
+    ports:
+      - "3306:3306"
+    restart: always
+    volumes:
+      - ./volumes/mysql/8.0.39:/var/lib/mysql
+    networks:
+      - bacsystem
+
+  redis:
+    build:
+      context: redis
+      dockerfile: redis/Dockerfile
+      target: dev
+    container_name: redis-app
+    hostname: redis
+    restart: always
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      start_period: 10s
+      interval: 10s
+      retries: 3
+      timeout: 5s
+    env_file:
+      - redis.env
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./volumes/redis/latest:/data
+    networks:
+      - bacsystem
+
+  debezium:
+    build:
+      context: debezium
+      dockerfile: debezium/Dockerfile
+      target: dev
+    container_name: debezium-app
+    hostname: debezium
+    restart: always
+    depends_on:
+      - kafka
+    env_file:
+      - debezium.env
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./volumes/debezium/latest:/kafka/logs
+      - ./volumes/debezium/latest:/kafka/config
+      - ./volumes/debezium/latest:/kafka/data
+    networks:
+      - bacsystem
+
+  kafka-ui:
+    container_name: kafka-ui
+    image: provectuslabs/kafka-ui:latest
+    ports:
+      - "8080:8080"
+    environment:
+      DYNAMIC_CONFIG_ENABLED: 'true'
+    volumes:
+      - ./volumes/kafka/ui/config.yaml:/etc/kafkaui/dynamic_config.yaml
+    networks:
+      - bacsystem
+
+  rabbitmq:
+    container_name: rabbitmq-app
+    image: rabbitmq:3-management-alpine
+    restart: always
+    hostname: rabbitmq
+    env_file:
+      - rabbitmq.env
+    logging:
+      options:
+        max-size: 10m
+        max-file: 3
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      - bacsystem
+    volumes:
+      - ./volumes/rabbitmq:/var/lib/rabbitmq
+
+  jenkins:
+    build:
+      context: jenkins/images
+      dockerfile: jenkins/images/Dockerfile
+    container_name: jenkins
+    hostname: jenkins
+    restart: always
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - ./volumes/jenkins:/var/jenkins_home  # Persistencia de datos
+    networks:
+      - bacsystem
+
+
+  jenkins-agent:
+    build:
+      context: jenkins
+      dockerfile: images/agents.dockerfile
+    container_name: jenkins-agent
+    hostname: jenkins-agent
+    privileged: true
+    user: root
+    restart: always
+    ports:
+      - "2200:22"
+    volumes:
+      - ./volumes/jenkins-agent:/home/jenkins/agent
+      - ./volumes/docker/run:/var/run/docker.sock
+      - ./volumes/docker/bin:/var/run/docker.sock
+    env_file:
+      - jenkins.env
+    networks:
+      - bacsystem
+
+  sonarqube:
+    build:
+      context: sonar
+      dockerfile: images/Dockerfile
+      target: dev
+    container_name: sonarqube
+    ports:
+      - "9000:9000"
+      - "9092:9092"
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://postgres:5432/postgres
+      SONAR_JDBC_USERNAME: postgres
+      SONAR_JDBC_PASSWORD: postgres
+    restart: always
+    networks:
+      - bacsystem
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:19.0.1
+    container_name: keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      DB_ADDR: postgres
+      DB_PORT: 5432
+      DB_SCHEMA: keycloak
+    ports:
+      - "8080:8080"
+    command:
+      - start-dev
+    networks:
+      - bacsystem
+
+networks:
+  bacsystem:
+    name: bacsystem-net-db
+    driver: bridge

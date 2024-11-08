@@ -1,0 +1,4 @@
+#!groovy
+
+@Library('devops-library') _
+ejercitoPipeline("GravitonPipeline", this)

@@ -1,0 +1,6 @@
+f7728edca87443bda86422272a46e33a
+
+https://www.youtube.com/watch?v=UfwQkuDa6Gc
+https://www.cloudbees.com/blog/how-to-install-and-run-jenkins-with-docker-compose#running-jenkins-with-docker-compose
+https://github.com/JoanEsquivel/jenkins-docker-test/tree/master
+https://github.com/aburaihan-dev/jenkins-in-docker/blob/main/.docker/Agent/Dockerfile
