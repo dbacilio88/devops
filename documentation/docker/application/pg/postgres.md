@@ -143,68 +143,81 @@ psql -U user1 -d bxcode
 
 # Crear usuarios owner pára cada base de datos;
 
-Paso 1: Conectarte a PostgreSQL
+Paso 1: Crear directorio para el tablespace y cambiar de owner
+
+```bash
+mkdir /var/lib/postgresql/data/tablespace/tbs000000
+chown postgres:postgres var/lib/postgresql/data/tablespaces/tbs000000
+```
+
+Paso 2: Conectarte a PostgreSQL
 
 Abre tu terminal y conéctate a PostgreSQL como superusuario (postgres):
 
 ```bash
 psql -U postgres
 ```
-Paso 2: Crear Usuarios
 
-Primero, crea los usuarios. Aquí vamos a crear user1 y user2. Asegúrate de usar contraseñas seguras:
-
-```bash
-create user user1 with password 'user1';
-create user user2 with password 'user2';
-```
-
-Paso 3: Crear Bases de Datos
-
-Crea una base de datos para cada usuario. Vamos a llamar a las bases de datos db_user1 y db_user2:
+Paso 3: Crear tablespace en PostgreSQL
 
 ```bash
-create database db_user1 owner user1;
-create database db_user2 owner user2;
+create tablespace tbs000000 location 'var/lib/postgresql/data/tablespaces/tbs000000'
 ```
 
-Paso 4: Conectar a Cada Base de Datos y Crear Esquemas
+Paso 4: Crear Usuarios
+
+Primero, crea los usuarios. Aquí vamos a crear el usuario bs000000. Asegúrate de usar contraseñas seguras:
+
+```bash
+create user bs000000 with password 'bs000000';
+```
+
+Paso 5: Crear Bases de Datos
+
+Crea una base de datos para cada usuario. Vamos a llamar a las bases de datos db000000:
+
+```bash
+create database db000000 owner bs000000 tablespace tbs000000;
+```
+
+Paso 6: Conectar a Cada Base de Datos y Crear Esquemas
 
 Ahora, conecta a cada base de datos y crea un esquema para cada usuario.
 
-Para user1:
-Conéctate a la base de datos db_user1:
+Para bs000000:
+Conéctate a la base de datos db000000:
 
 ```bash
-\c db_user1
+\c db000000
 ```
-Crea un esquema llamado data:
+
+Crea un esquema llamado sc000000:
 
 ```bash
-create schema data;
+create schema sc000000 authorization bs000000;
+set search_path = "sc000000"
 ```
 
-Paso 5: Asignar Permisos
+Paso 7: Asignar Permisos
 
 Ahora asigna permisos a cada usuario sobre su esquema.
 
-Para user1:
-Conéctate a db_user1 (si no estás ya en esa base de datos):
+Para bs000000:
+Conéctate a db000000 (si no estás ya en esa base de datos):
 
 ```bash
-grant usage on schema data to user1;
-grant create on schema data to user1;
-grant select, insert, update, delete on all tables in schema data to user1;
+grant usage on schema sc000000 to bs000000;
+grant create on schema sc000000 to bs000000;
+grant select, insert, update, delete on all tables in schema sc000000 to bs000000;
 ```
 
-Paso 6: Verificar Permisos
+Paso 8: Verificar Permisos
 
-Para verificar que los permisos se han otorgado correctamente, puedes usar el siguiente comando para ver los permisos del esquema:
+Para verificar que los permisos se han otorgado correctamente, puedes usar el siguiente comando para ver los permisos
+del esquema:
 
 ```bash
 SELECT nspname, pg_catalog.pg_get_userbyid(nspowner) AS owner
 FROM pg_catalog.pg_namespace
-WHERE nspname = 'd000000';
-
+WHERE nspname = 'sc000000';
 ```
-
