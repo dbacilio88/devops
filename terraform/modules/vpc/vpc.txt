@@ -1,0 +1,184 @@
+# Define the provider
+
+
+# Create the VPC
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/16"
+  enable_dns_support = true
+  enable_dns_hostnames = true
+  tags = {
+    Name = "my-vpc"
+  }
+}
+
+# Create an Internet Gateway
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.main.id
+  tags = {
+    Name = "my-igw"
+  }
+}
+
+# Allocate an Elastic IP
+resource "aws_eip" "nat" {
+  vpc = true # This is required for NAT Gateway usage
+  tags = {
+    Name = "my-eip"
+  }
+}
+
+# Create a NAT Gateway
+resource "aws_nat_gateway" "nat" {
+  allocation_id = aws_eip.nat.id
+  subnet_id     = aws_subnet.public_subnet_a.id # Ensure this is a public subnet
+
+  tags = {
+    Name = "my-nat-gateway"
+  }
+
+  # Add a local-exec provisioner to wait for the NAT Gateway to become available
+  provisioner "local-exec" {
+    command = <<EOT
+    ./wait-for-nat-gateway.sh ${aws_nat_gateway.nat.id}
+    EOT
+  }
+}
+
+# Create an S3 VPC Endpoint
+resource "aws_vpc_endpoint" "s3" {
+  vpc_id = aws_vpc.main.id
+  service_name = "com.amazonaws.${""}.s3"
+
+  route_table_ids = [
+    aws_route_table.private.id
+  ]
+
+  tags = {
+    Name = "s3-endpoint"
+  }
+}
+
+# Create route tables
+
+## Public Route Table
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.main.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
+
+  tags = {
+    Name = "public-route-table"
+  }
+}
+
+## Private Route Table
+resource "aws_route_table" "private" {
+  vpc_id = aws_vpc.main.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.nat.id
+  }
+
+  tags = {
+    Name = "private-route-table"
+  }
+}
+
+# Create subnets
+
+## Public Subnets
+resource "aws_subnet" "public_subnet_a" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.1.0/24"
+  availability_zone       = "us-east-1a"
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "public-subnet-a"
+  }
+}
+
+resource "aws_subnet" "public_subnet_b" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.2.0/24"
+  availability_zone       = "us-east-1b"
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "public-subnet-b"
+  }
+}
+
+resource "aws_subnet" "public_subnet_c" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.3.0/24"
+  availability_zone       = "us-east-1c"
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "public-subnet-c"
+  }
+}
+
+## Private Subnets
+resource "aws_subnet" "private_subnet_a" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.4.0/24"
+  availability_zone       = "us-east-1a"
+  tags = {
+    Name = "private-subnet-a"
+  }
+}
+
+resource "aws_subnet" "private_subnet_b" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.5.0/24"
+  availability_zone       = "us-east-1b"
+  tags = {
+    Name = "private-subnet-b"
+  }
+}
+
+resource "aws_subnet" "private_subnet_c" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.6.0/24"
+  availability_zone       = "us-east-1c"
+  tags = {
+    Name = "private-subnet-c"
+  }
+}
+
+# Associate route tables with subnets
+
+## Public Subnets with Public Route Table
+resource "aws_route_table_association" "public_subnet_a" {
+  subnet_id      = aws_subnet.public_subnet_a.id
+  route_table_id = aws_route_table.public.id
+}
+
+resource "aws_route_table_association" "public_subnet_b" {
+  subnet_id      = aws_subnet.public_subnet_b.id
+  route_table_id = aws_route_table.public.id
+}
+
+resource "aws_route_table_association" "public_subnet_c" {
+  subnet_id      = aws_subnet.public_subnet_c.id
+  route_table_id = aws_route_table.public.id
+}
+
+## Private Subnets with Private Route Table
+resource "aws_route_table_association" "private_subnet_a" {
+  subnet_id      = aws_subnet.private_subnet_a.id
+  route_table_id = aws_route_table.private.id
+}
+
+resource "aws_route_table_association" "private_subnet_b" {
+  subnet_id      = aws_subnet.private_subnet_b.id
+  route_table_id = aws_route_table.private.id
+}
+
+resource "aws_route_table_association" "private_subnet_c" {
+  subnet_id      = aws_subnet.private_subnet_c.id
+  route_table_id = aws_route_table.private.id
+}

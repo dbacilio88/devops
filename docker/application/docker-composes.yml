@@ -3,7 +3,7 @@ services:
   zookeeper:
     build:
       context: zookeeper
-      dockerfile: Dockerfile
+      dockerfile: zookeeper/Dockerfile
       target: dev
     container_name: zookeeper
     hostname: zookeeper
@@ -25,7 +25,7 @@ services:
   kafka:
     build:
       context: kafka
-      dockerfile: Dockerfile
+      dockerfile: kafka/Dockerfile
       target: dev
     container_name: kafka-app
     hostname: kafka
@@ -51,7 +51,7 @@ services:
   postgres:
     build:
       context: pg
-      dockerfile: Dockerfile
+      dockerfile: pg/Dockerfile
       target: dev
     container_name: postgres-app
     hostname: postgres
@@ -75,7 +75,7 @@ services:
   mysql:
     build:
       context: mysql
-      dockerfile: Dockerfile
+      dockerfile: mysql/Dockerfile
       target: dev
     container_name: mysql-app
     hostname: mysql
@@ -92,7 +92,7 @@ services:
   redis:
     build:
       context: redis
-      dockerfile: Dockerfile
+      dockerfile: redis/Dockerfile
       target: dev
     container_name: redis-app
     hostname: redis
@@ -115,7 +115,7 @@ services:
   debezium:
     build:
       context: debezium
-      dockerfile: Dockerfile
+      dockerfile: debezium/Dockerfile
       target: dev
     container_name: debezium-app
     hostname: debezium
@@ -166,8 +166,8 @@ services:
 
   jenkins:
     build:
-      context: ../application/jenkins/images
-      dockerfile: Dockerfile
+      context: jenkins/images
+      dockerfile: jenkins/images/Dockerfile
     container_name: jenkins
     hostname: jenkins
     restart: always
