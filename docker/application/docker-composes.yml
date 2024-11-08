@@ -179,6 +179,63 @@ services:
     networks:
       - bacsystem
 
+
+  jenkins-agent:
+    build:
+      context: jenkins
+      dockerfile: images/agents.dockerfile
+    container_name: jenkins-agent
+    hostname: jenkins-agent
+    privileged: true
+    user: root
+    restart: always
+    ports:
+      - "2200:22"
+    volumes:
+      - ./volumes/jenkins-agent:/home/jenkins/agent
+      - ./volumes/docker/run:/var/run/docker.sock
+      - ./volumes/docker/bin:/var/run/docker.sock
+    env_file:
+      - jenkins.env
+    networks:
+      - bacsystem
+
+  sonarqube:
+    build:
+      context: sonar
+      dockerfile: images/Dockerfile
+      target: dev
+    container_name: sonarqube
+    ports:
+      - "9000:9000"
+      - "9092:9092"
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://postgres:5432/postgres
+      SONAR_JDBC_USERNAME: postgres
+      SONAR_JDBC_PASSWORD: postgres
+    restart: always
+    networks:
+      - bacsystem
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:19.0.1
+    container_name: keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      DB_ADDR: postgres
+      DB_PORT: 5432
+      DB_SCHEMA: keycloak
+    ports:
+      - "8080:8080"
+    command:
+      - start-dev
+    networks:
+      - bacsystem
+
 networks:
   bacsystem:
     name: bacsystem-net-db

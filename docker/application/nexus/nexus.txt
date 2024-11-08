@@ -1,0 +1,226 @@
+# Instalar Docker
+
+Config file /lib/systemd/system/docker.service
+
+# CentOS
+---------
+
+# Utilidades
+
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+
+# Agregar el repo de docker
+
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+# Instalar docker
+
+sudo yum install docker-ce -y
+# Iniciar el servicio
+
+sudo systemctl start docker
+
+# Iniciarlo con el sistema
+
+sudo systemctl enable docker
+
+# Agregar usuario al grupo docker
+
+whoami # Saber el nombre de tu usuario
+sudo usermod -aG docker nombre_de_salida_en_whoami
+
+# Salir de la sesión
+exit
+
+# Iniciar de nuevo con el usuario y probar
+
+docker run hello-world
+
+# Fedora
+---------
+
+# La instalación es igual que en CentOS, solo deben modificar la url del repo, porque los pasos son idénticos
+
+# Utilidades
+
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+
+# Agregar el repo de docker
+
+sudo yum-config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+
+# Instalar docker
+
+sudo yum install docker-ce -y
+
+# Iniciarlo con el sistema
+
+sudo systemctl enable docker
+
+# Agregar usuario al grupo docker
+
+whoami # Saber el nombre de tu usuario
+sudo usermod -aG docker nombre_de_salida_en_whoami
+
+# Salir de la sesión
+exit
+
+# Iniciar de nuevo con el usuario y probar
+
+docker run hello-world
+
+# Ubuntu
+---------
+
+# Actualiza los repos
+
+sudo apt-get update
+
+# Instala utilidades
+
+sudo apt-get install apt-transport-https ca-certificates curl software-properties-common -y
+
+# Agregar el gpg
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+# Agregar el repo
+
+ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+# Actualizar de nuevo
+
+ sudo apt-get update
+
+# Instalar docker
+
+ sudo apt-get install docker-ce
+
+# Iniciarlo con el sistema
+
+sudo systemctl enable docker
+
+# Agregar usuario al grupo docker
+
+whoami # Saber el nombre de tu usuario
+sudo usermod -aG docker nombre_de_salida_en_whoami
+
+# Salir de la sesión
+exit
+
+# Iniciar de nuevo con el usuario y probar
+
+docker run hello-world
+
+
+# Debian
+---------
+
+# Actualiza los repos
+
+sudo apt-get update
+
+# Instala utilidades
+
+sudo apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common -y
+
+# Agregar el gpg
+
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+
+# Agregar el repo
+
+ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+
+# Actualizar de nuevo
+
+ sudo apt-get update
+
+# Instalar docker
+
+ sudo apt-get install docker-ce
+
+# Iniciarlo con el sistema
+
+sudo systemctl enable docker
+
+# Agregar usuario al grupo docker
+
+whoami # Saber el nombre de tu usuario
+sudo usermod -aG docker nombre_de_salida_en_whoami
+
+# Salir de la sesión
+exit
+
+# Iniciar de nuevo con el usuario y probar
+
+docker run hello-world
+
+
+---
+nexus
+- link: https://help.sonatype.com/repomanager2/staging-releases/configuring-your-project-for-deployment
+- link: https://maven.apache.org/guides/mini/guide-encryption.html
+- link: https://binarycoffee.dev/post/configurando-nexus-con-docker
+- link: https://medium.com/codemonday/setup-nexus-oss-on-docker-as-docker-registry-for-learning-748c23f0b951
+
+### Password encryption
+
+#### Place the settings-security.xml file in the .m2 directory
+
+```shell
+mvn --encrypt-master-password
+````
+
+mvn --encrypt-master-password
+admin
+settings-security.xml
+{n4b49QnA1KEH2cIsAyBazvtxicSOYpqabgui4eud8d4=}
+
+- Master password: password
+- out: {CUMfGAPpy2QHbwSUICwnS5vql6oE/MkQl4MIB2ryZmw=}
+
+#### Place the settings.xml file in the .m2 directory
+
+```shell
+mvn --encrypt-password
+```
+
+mvn --encrypt-password
+settings.xml
+{E3cq+tddelIHY6WDhMs+kJtzgQYDnSqTrpLYFnURlCY=}
+
+- Password: password
+  #Docker configuration daemon
+
+- "insecure-registries": ["host_port_or_cidr|redacted"],
+  "insecure-registries": ["http://192.168.1.14:8082"]
+- create repository type docker hosted
+- docker login 192.168.1.14:8082
+
+#### Docker build image
+
+```shell
+  docker image build -t api-core-ejercito-eureka-microservice .
+  docker image build -t api-core-ejercito-security-microservice .
+  docker image build -t api-core-ejercito-dependencies-microservice .
+  docker image build -t api-core-ejercito-gateway-microservice .
+  docker image build -t api-core-ejercito-statistics-microservice .
+  docker image build -t app-ejercito-statistics .
+```
+
+#### Docker create tag
+
+```shell
+docker tag api-core-ejercito-eureka-microservice localhost:8082/api-core-ejercito-eureka-microservice
+docker tag api-core-ejercito-gateway-microservice localhost:8082/api-core-ejercito-gateway-microservice
+
+```
+
+#### Docker push to repository docker in nexus
+
+```shell
+- docker push localhost:8082/api-core-ejercito-eureka-microservice
+- docker push localhost:8082/api-core-ejercito-gateway-microservice
+
+```
