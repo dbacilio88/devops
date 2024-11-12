@@ -51,7 +51,7 @@ services:
   postgres:
     build:
       context: pg
-      dockerfile: pg/Dockerfile
+      dockerfile: Dockerfile
       target: dev
     container_name: postgres-app
     hostname: postgres
